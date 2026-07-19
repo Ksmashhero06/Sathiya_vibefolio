@@ -1,0 +1,6 @@
+{
+  "name": "Sathiyamoorthi K Portfolio",
+  "description": "A modern, premium portfolio website for Sathiyamoorthi K - Web Developer, Squad Lead & Game Engineer. Features a command palette, an AI chatbot, interactive skill filters, live Credly badge integration, and high-performance design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
