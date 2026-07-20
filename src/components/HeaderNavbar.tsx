@@ -16,6 +16,7 @@ import {
   Check
 } from "lucide-react";
 import CommandPalette from "./CommandPalette";
+import AppearancePanel from "./AppearancePanel";
 
 interface HeaderNavbarProps {
   theme: "dark" | "light";
@@ -41,14 +42,6 @@ export default function HeaderNavbar({
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
-
-  const themesList = [
-    { id: "neutral", label: "Premium Neutral", dotClass: "bg-zinc-400 border border-zinc-500" },
-    { id: "purple", label: "Cyber Purple", dotClass: "bg-purple-500" },
-    { id: "emerald", label: "Emerald Green", dotClass: "bg-emerald-500" },
-    { id: "crimson", label: "Premium Crimson", dotClass: "bg-red-500" },
-    { id: "sky", label: "Premium Sky Blue", dotClass: "bg-sky-400" }
-  ];
 
   // Monitor scroll height to handle initial transparency vs glass blurred states
   useEffect(() => {
@@ -151,120 +144,40 @@ export default function HeaderNavbar({
               <Download className="w-3 h-3 text-purple-300 opacity-60 group-hover:opacity-100 group-hover:translate-y-0.5 transition-all" />
             </a>
 
-            {/* Elegant Custom Theme Switcher Dropdown */}
-            <div className="relative" id="theme-switcher-dropdown">
+            {/* Consolidated Premium Appearance Selector Panel */}
+            <div className="relative animate-fade-in" id="appearance-panel-container">
               <button
+                id="appearance-panel-trigger"
                 onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-                className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-850 bg-zinc-50 dark:bg-zinc-950/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white transition-all shadow-sm cursor-pointer shrink-0 flex items-center justify-center gap-1.5"
-                title="Select portfolio color theme"
+                className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-850 bg-zinc-50 dark:bg-zinc-950/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white transition-all shadow-sm cursor-pointer shrink-0 flex items-center justify-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                title="Select appearance mode and accent color"
+                aria-haspopup="dialog"
+                aria-expanded={isThemeMenuOpen}
               >
-                <Palette className="w-4 h-4 text-purple-400" />
+                {theme === "light" ? (
+                  <Sun className="w-4 h-4 text-amber-500" />
+                ) : (
+                  <Moon className="w-4 h-4 text-indigo-400" />
+                )}
                 <span className="hidden md:inline text-[10px] font-mono uppercase tracking-wider font-semibold">
-                  Theme
+                  Appearance
                 </span>
               </button>
 
               <AnimatePresence>
                 {isThemeMenuOpen && (
-                  <>
-                    {/* Invisible backdrop to dismiss dropdown on click outside */}
-                    <div
-                      className="fixed inset-0 z-40"
-                      onClick={() => setIsThemeMenuOpen(false)}
-                    />
-                    
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 w-56 rounded-xl bg-white dark:bg-[#030303] border border-zinc-200 dark:border-zinc-900 shadow-2xl p-2 z-50 text-left"
-                    >
-                      <div className="px-2 py-1 border-b border-zinc-100 dark:border-zinc-900 mb-1.5">
-                        <span className="text-[9px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block font-semibold">
-                          Theme Family
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-1 gap-1 mb-2">
-                        {themesList.map((t) => {
-                          const isSelected = activeTheme === t.id;
-                          return (
-                            <button
-                              key={t.id}
-                              onClick={() => {
-                                setThemeAndPersist(t.id);
-                              }}
-                              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-sans transition-all text-left group cursor-pointer ${
-                                isSelected
-                                  ? "bg-purple-500/10 text-purple-400 font-semibold"
-                                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900/60"
-                              }`}
-                            >
-                              <div className="flex items-center gap-2.5">
-                                <span
-                                  className={`w-3.5 h-3.5 rounded-full shadow-inner block shrink-0 ${t.dotClass}`}
-                                />
-                                <span>{t.label}</span>
-                              </div>
-                              {isSelected && <Check className="w-3.5 h-3.5 text-purple-400 shrink-0" />}
-                            </button>
-                          );
-                        })}
-                      </div>
-
-                      <div className="px-2 py-1 border-t border-b border-zinc-100 dark:border-zinc-900 my-1.5">
-                        <span className="text-[9px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block font-semibold">
-                          Appearance Mode
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-1 px-1 py-0.5">
-                        <button
-                          onClick={() => {
-                            if (theme !== "light") toggleTheme();
-                          }}
-                          className={`flex items-center justify-center gap-1 py-1 rounded-lg text-xs font-medium cursor-pointer transition-all ${
-                            theme === "light"
-                              ? "bg-purple-500/10 text-purple-500 border border-purple-500/20"
-                              : "text-zinc-500 hover:text-zinc-200"
-                          }`}
-                        >
-                          <Sun className="w-3 h-3" />
-                          <span>Light</span>
-                        </button>
-                        <button
-                          onClick={() => {
-                            if (theme !== "dark") toggleTheme();
-                          }}
-                          className={`flex items-center justify-center gap-1 py-1 rounded-lg text-xs font-medium cursor-pointer transition-all ${
-                            theme === "dark"
-                              ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
-                              : "text-zinc-500 hover:text-zinc-200"
-                          }`}
-                        >
-                          <Moon className="w-3 h-3" />
-                          <span>Dark</span>
-                        </button>
-                      </div>
-                    </motion.div>
-                  </>
+                  <AppearancePanel
+                    theme={theme}
+                    setThemeMode={(mode) => {
+                      if (theme !== mode) toggleTheme();
+                    }}
+                    activeTheme={activeTheme as any}
+                    setThemeAndPersist={setThemeAndPersist}
+                    onClose={() => setIsThemeMenuOpen(false)}
+                  />
                 )}
               </AnimatePresence>
             </div>
-
-            {/* Dark/Light Rotating Mode Switch */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-850 bg-zinc-50 dark:bg-zinc-950/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white transition-all shadow-sm cursor-pointer shrink-0"
-              title="Toggle Dark/Light theme"
-            >
-              <motion.div
-                initial={false}
-                animate={{ rotate: theme === "dark" ? 180 : 0 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              >
-                {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-              </motion.div>
-            </button>
 
             {/* Interactive Morphing Hamburger menu */}
             <button
