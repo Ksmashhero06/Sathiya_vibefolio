@@ -43,12 +43,11 @@ export default function HeaderNavbar({
   const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
 
   const themesList = [
-    { id: "neutral", label: "Dark (Neutral)", dotClass: "bg-zinc-400" },
-    { id: "purple", label: "Cyber Purple (Default)", dotClass: "bg-purple-500" },
+    { id: "neutral", label: "Premium Neutral", dotClass: "bg-zinc-400 border border-zinc-500" },
+    { id: "purple", label: "Cyber Purple", dotClass: "bg-purple-500" },
     { id: "emerald", label: "Emerald Green", dotClass: "bg-emerald-500" },
-    { id: "crimson", label: "Crimson Red", dotClass: "bg-red-500" },
-    { id: "sky", label: "Sky Blue", dotClass: "bg-sky-400" },
-    { id: "light", label: "Light Theme", dotClass: "bg-zinc-100 border border-zinc-300 dark:border-zinc-800" }
+    { id: "crimson", label: "Premium Crimson", dotClass: "bg-red-500" },
+    { id: "sky", label: "Premium Sky Blue", dotClass: "bg-sky-400" }
   ];
 
   // Monitor scroll height to handle initial transparency vs glass blurred states
@@ -179,14 +178,14 @@ export default function HeaderNavbar({
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 w-52 rounded-xl bg-white dark:bg-[#030303] border border-zinc-200 dark:border-zinc-900 shadow-2xl p-2 z-50 text-left"
+                      className="absolute right-0 mt-2 w-56 rounded-xl bg-white dark:bg-[#030303] border border-zinc-200 dark:border-zinc-900 shadow-2xl p-2 z-50 text-left"
                     >
-                      <div className="px-2 py-1.5 border-b border-zinc-100 dark:border-zinc-900 mb-1.5">
+                      <div className="px-2 py-1 border-b border-zinc-100 dark:border-zinc-900 mb-1.5">
                         <span className="text-[9px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block font-semibold">
-                          Choose Accent Theme
+                          Theme Family
                         </span>
                       </div>
-                      <div className="grid grid-cols-1 gap-1">
+                      <div className="grid grid-cols-1 gap-1 mb-2">
                         {themesList.map((t) => {
                           const isSelected = activeTheme === t.id;
                           return (
@@ -194,9 +193,8 @@ export default function HeaderNavbar({
                               key={t.id}
                               onClick={() => {
                                 setThemeAndPersist(t.id);
-                                setIsThemeMenuOpen(false);
                               }}
-                              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs font-sans transition-all text-left group cursor-pointer ${
+                              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-sans transition-all text-left group cursor-pointer ${
                                 isSelected
                                   ? "bg-purple-500/10 text-purple-400 font-semibold"
                                   : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900/60"
@@ -212,6 +210,40 @@ export default function HeaderNavbar({
                             </button>
                           );
                         })}
+                      </div>
+
+                      <div className="px-2 py-1 border-t border-b border-zinc-100 dark:border-zinc-900 my-1.5">
+                        <span className="text-[9px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block font-semibold">
+                          Appearance Mode
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1 px-1 py-0.5">
+                        <button
+                          onClick={() => {
+                            if (theme !== "light") toggleTheme();
+                          }}
+                          className={`flex items-center justify-center gap-1 py-1 rounded-lg text-xs font-medium cursor-pointer transition-all ${
+                            theme === "light"
+                              ? "bg-purple-500/10 text-purple-500 border border-purple-500/20"
+                              : "text-zinc-500 hover:text-zinc-200"
+                          }`}
+                        >
+                          <Sun className="w-3 h-3" />
+                          <span>Light</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (theme !== "dark") toggleTheme();
+                          }}
+                          className={`flex items-center justify-center gap-1 py-1 rounded-lg text-xs font-medium cursor-pointer transition-all ${
+                            theme === "dark"
+                              ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                              : "text-zinc-500 hover:text-zinc-200"
+                          }`}
+                        >
+                          <Moon className="w-3 h-3" />
+                          <span>Dark</span>
+                        </button>
                       </div>
                     </motion.div>
                   </>

@@ -97,8 +97,8 @@ export default function AIChatbot() {
           {/* Chat header */}
           <div className="px-5 py-4 border-b border-zinc-900 flex items-center justify-between bg-[#030303]/40">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center border border-purple-500/30">
-                <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center border" style={{ backgroundColor: 'var(--glow-color)', borderColor: 'var(--border-color)' }}>
+                <Sparkles className="w-4 h-4 animate-pulse" style={{ color: 'var(--button-bg)' }} />
               </div>
               <div>
                 <h3 className="text-sm font-medium text-white">Sathiya-AI</h3>
@@ -126,9 +126,10 @@ export default function AIChatbot() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                     msg.sender === "user"
-                      ? "bg-purple-500/10 border border-purple-500/30 text-white rounded-tr-none"
+                      ? "border text-white rounded-tr-none"
                       : "bg-zinc-950/60 border border-zinc-850 text-zinc-300 rounded-tl-none"
                   }`}
+                  style={msg.sender === "user" ? { backgroundColor: 'var(--glow-color)', borderColor: 'var(--border-color)' } : undefined}
                 >
                   <p className="whitespace-pre-line">{msg.text}</p>
                 </div>
@@ -137,7 +138,7 @@ export default function AIChatbot() {
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-zinc-950/60 border border-zinc-850 rounded-2xl rounded-tl-none px-4 py-3 flex items-center gap-2 text-xs text-zinc-400">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-purple-400" />
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" style={{ color: 'var(--button-bg)' }} />
                   Formulating answer...
                 </div>
               </div>
@@ -156,7 +157,7 @@ export default function AIChatbot() {
                   <button
                     key={i}
                     onClick={() => handleSendMessage(suggestion)}
-                    className="text-xs px-2.5 py-1 rounded-full border border-zinc-850 bg-zinc-900/60 text-zinc-400 hover:text-white hover:border-purple-500/30 hover:bg-purple-500/5 transition-all text-left flex items-center gap-1 group cursor-pointer"
+                    className="text-xs px-2.5 py-1 rounded-full border border-zinc-850 bg-zinc-900/60 text-zinc-400 hover:text-white hover:border-[var(--border-color)] hover:bg-[var(--glow-color)] transition-all text-left flex items-center gap-1 group cursor-pointer"
                   >
                     {suggestion}
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -180,12 +181,12 @@ export default function AIChatbot() {
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Ask Sathiya-AI..."
               disabled={isLoading}
-              className="flex-1 bg-zinc-900/80 border border-zinc-850 focus:border-purple-500/50 outline-none text-sm text-white rounded-xl px-3.5 py-2 placeholder-zinc-500 transition-all focus:ring-1 focus:ring-purple-500/20"
+              className="flex-1 bg-zinc-900/80 border border-zinc-850 focus:border-[var(--border-color)] outline-none text-sm text-white rounded-xl px-3.5 py-2 placeholder-zinc-500 transition-all focus:ring-1 focus:ring-[var(--glow-color)]"
             />
             <button
               type="submit"
               disabled={!inputValue.trim() || isLoading}
-              className="p-2 bg-purple-500 hover:bg-purple-400 disabled:bg-zinc-900 disabled:text-zinc-600 text-white rounded-xl transition-colors shrink-0 cursor-pointer"
+              className="p-2 bg-[var(--button-bg)] hover:bg-[var(--button-hover)] disabled:bg-zinc-900 disabled:text-zinc-600 text-[var(--button-text)] rounded-xl transition-colors shrink-0 cursor-pointer"
             >
               <Send className="w-4 h-4" />
             </button>
@@ -205,7 +206,7 @@ export default function AIChatbot() {
         <div className="relative">
           <MessageSquare className="w-5 h-5" />
           {!isOpen && (
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-purple-500 rounded-full border border-[#030303] animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-[var(--button-bg)] rounded-full border border-[#030303] animate-pulse" />
           )}
         </div>
         <span className="text-sm tracking-wide">

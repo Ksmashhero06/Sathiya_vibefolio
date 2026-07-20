@@ -41,45 +41,56 @@ import AnimatedCursor from "./components/AnimatedCursor";
 export type ThemeOption = "neutral" | "purple" | "emerald" | "crimson" | "sky" | "light";
 
 export default function App() {
-  const [activeTheme, setActiveTheme] = useState<ThemeOption>(() => {
-    const saved = localStorage.getItem("portfolio-theme") as ThemeOption;
-    return saved || "purple";
+  const [activeTheme, setActiveTheme] = useState<"neutral" | "purple" | "emerald" | "crimson" | "sky">(() => {
+    const savedFamily = localStorage.getItem("portfolio-theme-family");
+    if (savedFamily && ["neutral", "purple", "emerald", "crimson", "sky"].includes(savedFamily)) {
+      return savedFamily as any;
+    }
+    const legacy = localStorage.getItem("portfolio-theme");
+    if (legacy && legacy !== "light" && ["neutral", "purple", "emerald", "crimson", "sky"].includes(legacy)) {
+      return legacy as any;
+    }
+    return "purple";
   });
-  const [theme, setTheme] = useState<"dark" | "light">(activeTheme === "light" ? "light" : "dark");
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    const savedMode = localStorage.getItem("portfolio-theme-mode");
+    if (savedMode && ["dark", "light"].includes(savedMode)) {
+      return savedMode as any;
+    }
+    const legacy = localStorage.getItem("portfolio-theme");
+    if (legacy === "light") {
+      return "light";
+    }
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  });
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isBotOpen, setIsBotOpen] = useState(false);
 
   // Set theme selection and persist to localStorage
-  const setThemeAndPersist = (newTheme: ThemeOption) => {
+  const setThemeAndPersist = (newTheme: "neutral" | "purple" | "emerald" | "crimson" | "sky") => {
     setActiveTheme(newTheme);
+    localStorage.setItem("portfolio-theme-family", newTheme);
     localStorage.setItem("portfolio-theme", newTheme);
-    if (newTheme === "light") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-      localStorage.setItem("portfolio-last-dark-theme", newTheme);
-    }
   };
 
   // Toggle dark/light theme
   const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-      setActiveTheme("light");
-      localStorage.setItem("portfolio-theme", "light");
-    } else {
-      const lastDark = (localStorage.getItem("portfolio-last-dark-theme") as ThemeOption) || "purple";
-      setTheme("dark");
-      setActiveTheme(lastDark);
-      localStorage.setItem("portfolio-theme", lastDark);
-    }
+    const newMode = theme === "dark" ? "light" : "dark";
+    setTheme(newMode);
+    localStorage.setItem("portfolio-theme-mode", newMode);
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", activeTheme);
-  }, [activeTheme]);
+    const combined = `${activeTheme}-${theme}`;
+    document.documentElement.setAttribute("data-theme", combined);
+    document.documentElement.setAttribute("data-theme-family", activeTheme);
+    document.documentElement.setAttribute("data-theme-mode", theme);
+  }, [activeTheme, theme]);
 
   // Trigger chatbot toggle externally (e.g. from command palette)
   const toggleChatbot = () => {
@@ -138,7 +149,12 @@ export default function App() {
   ];
 
   return (
-    <div className={theme === "light" ? "light-mode" : ""} data-theme={activeTheme}>
+    <div 
+      className={theme === "light" ? "light-mode" : ""} 
+      data-theme={`${activeTheme}-${theme}`}
+      data-theme-family={activeTheme}
+      data-theme-mode={theme}
+    >
       
       {/* Premium Noise Overlay Texture */}
       <div className="noise-overlay" />
@@ -150,11 +166,7 @@ export default function App() {
       />
 
       {/* Embedded Ambient Background Engine */}
-      {theme === "dark" ? (
-        <AnimatedBackground />
-      ) : (
-        <div className="fixed inset-0 -z-50 bg-slate-50 [linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
-      )}
+      <AnimatedBackground />
 
       {/* Sticky Premium Navbar */}
       <HeaderNavbar

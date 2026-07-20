@@ -64,22 +64,23 @@ export default function AnimatedBackground() {
       />
 
       {/* Layered Gradient Mesh: Ambient glowing blobs */}
-      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[140px] animate-pulse [animation-duration:12s]" />
-      <div className="absolute bottom-[-15%] left-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[130px] animate-pulse [animation-duration:8s] [animation-delay:2s]" />
-      <div className="absolute top-[40%] left-[30%] w-[450px] h-[450px] bg-pink-600/5 rounded-full blur-[120px] animate-pulse [animation-duration:15s] [animation-delay:4s]" />
+      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full blur-[140px] animate-pulse [animation-duration:12s]" style={{ backgroundColor: "var(--glow-radial-1)" }} />
+      <div className="absolute bottom-[-15%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[130px] animate-pulse [animation-duration:8s] [animation-delay:2s]" style={{ backgroundColor: "var(--glow-radial-2)" }} />
+      <div className="absolute top-[40%] left-[30%] w-[450px] h-[450px] rounded-full blur-[120px] animate-pulse [animation-duration:15s] [animation-delay:4s]" style={{ backgroundColor: "var(--sweep-color)" }} />
 
       {/* Floating particles mapping with custom animations */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
         {particles.map((p) => (
           <div
             key={p.id}
-            className="absolute rounded-full bg-white animate-float"
+            className="absolute rounded-full animate-float"
             style={{
               left: `${p.x}%`,
               top: `${p.y}%`,
               width: `${p.size}px`,
               height: `${p.size}px`,
               opacity: p.opacity,
+              backgroundColor: "var(--particle-color, rgba(255, 255, 255, 0.3))",
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
             }}

@@ -200,11 +200,11 @@ export default function CommandPalette({ onNavigate, onThemeToggle, onChatbotTog
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "Navigation":
-        return <Navigation className="w-4 h-4 text-purple-400" />;
+        return <Navigation className="w-4 h-4" style={{ color: 'var(--button-bg)' }} />;
       case "Actions":
-        return <Terminal className="w-4 h-4 text-blue-400" />;
+        return <Terminal className="w-4 h-4 text-blue-450" style={{ color: 'var(--button-bg)' }} />;
       case "Socials":
-        return <ExternalLink className="w-4 h-4 text-pink-400" />;
+        return <ExternalLink className="w-4 h-4 text-pink-450" style={{ color: 'var(--button-bg)' }} />;
       default:
         return <HelpCircle className="w-4 h-4 text-zinc-500" />;
     }
@@ -277,7 +277,7 @@ export default function CommandPalette({ onNavigate, onThemeToggle, onChatbotTog
                       }}
                       className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left transition-all cursor-pointer ${
                         isSelected
-                          ? "bg-purple-500/10 border border-purple-500/30 text-white animate-pulse"
+                          ? "bg-[var(--glow-color)] border-[var(--border-color)] text-white animate-pulse"
                           : "bg-transparent border border-transparent text-zinc-400 hover:text-white"
                       }`}
                     >
@@ -285,7 +285,7 @@ export default function CommandPalette({ onNavigate, onThemeToggle, onChatbotTog
                         <div
                           className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-colors ${
                             isSelected
-                              ? "bg-zinc-950/40 border-purple-500/20"
+                              ? "bg-zinc-950/40 border-[var(--border-color)]"
                               : "bg-zinc-950/20 border-zinc-850/50"
                           }`}
                         >
