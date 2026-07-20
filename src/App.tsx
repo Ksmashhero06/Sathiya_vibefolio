@@ -38,17 +38,48 @@ import AboutSection from "./components/AboutSection";
 import Footer from "./components/Footer";
 import AnimatedCursor from "./components/AnimatedCursor";
 
+export type ThemeOption = "neutral" | "purple" | "emerald" | "crimson" | "sky" | "light";
+
 export default function App() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [activeTheme, setActiveTheme] = useState<ThemeOption>(() => {
+    const saved = localStorage.getItem("portfolio-theme") as ThemeOption;
+    return saved || "purple";
+  });
+  const [theme, setTheme] = useState<"dark" | "light">(activeTheme === "light" ? "light" : "dark");
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isBotOpen, setIsBotOpen] = useState(false);
 
+  // Set theme selection and persist to localStorage
+  const setThemeAndPersist = (newTheme: ThemeOption) => {
+    setActiveTheme(newTheme);
+    localStorage.setItem("portfolio-theme", newTheme);
+    if (newTheme === "light") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+      localStorage.setItem("portfolio-last-dark-theme", newTheme);
+    }
+  };
+
   // Toggle dark/light theme
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    if (theme === "dark") {
+      setTheme("light");
+      setActiveTheme("light");
+      localStorage.setItem("portfolio-theme", "light");
+    } else {
+      const lastDark = (localStorage.getItem("portfolio-last-dark-theme") as ThemeOption) || "purple";
+      setTheme("dark");
+      setActiveTheme(lastDark);
+      localStorage.setItem("portfolio-theme", lastDark);
+    }
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", activeTheme);
+  }, [activeTheme]);
 
   // Trigger chatbot toggle externally (e.g. from command palette)
   const toggleChatbot = () => {
@@ -107,7 +138,7 @@ export default function App() {
   ];
 
   return (
-    <div className={theme === "light" ? "light-mode" : ""}>
+    <div className={theme === "light" ? "light-mode" : ""} data-theme={activeTheme}>
       
       {/* Premium Noise Overlay Texture */}
       <div className="noise-overlay" />
@@ -125,30 +156,12 @@ export default function App() {
         <div className="fixed inset-0 -z-50 bg-slate-50 [linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
       )}
 
-      {/* Global CSS binds for Light Mode overrides */}
-      {theme === "light" && (
-        <style>{`
-          body { background-color: #fafafa !important; color: #1e293b !important; }
-          #bg-animation { display: none !important; }
-          h1, h2, h3, h4, h5, h6 { color: #0f172a !important; }
-          p { color: #334155 !important; }
-          span { color: #475569; }
-          .border-slate-800, .border-slate-800\\/80, .border-slate-900 { border-color: #e2e8f0 !important; }
-          .bg-slate-900, .bg-slate-900\\/10, .bg-slate-900\\/20, .bg-slate-900\\/40, .bg-slate-900\\/90 { background-color: rgba(255, 255, 255, 0.8) !important; border-color: #e2e8f0 !important; }
-          .bg-slate-950, .bg-slate-950\\/40, .bg-slate-950\\/20, .bg-slate-950\\/30 { background-color: #ffffff !important; border-color: #f1f5f9 !important; }
-          input, textarea { background-color: #ffffff !important; border-color: #cbd5e1 !important; color: #0f172a !important; }
-          input::placeholder, textarea::placeholder { color: #94a3b8 !important; }
-          kbd { background-color: #f1f5f9 !important; color: #64748b !important; border-color: #cbd5e1 !important; }
-          .text-slate-100, .text-slate-200, .text-slate-300 { color: #1e293b !important; }
-          .text-slate-400, .text-slate-500 { color: #64748b !important; }
-          .hover\\:border-slate-700\\/80:hover { border-color: #38bdf8 !important; }
-        `}</style>
-      )}
-
       {/* Sticky Premium Navbar */}
       <HeaderNavbar
         theme={theme}
         toggleTheme={toggleTheme}
+        activeTheme={activeTheme}
+        setThemeAndPersist={setThemeAndPersist}
         activeSection={activeSection}
         scrollToSection={scrollToSection}
         toggleChatbot={toggleChatbot}

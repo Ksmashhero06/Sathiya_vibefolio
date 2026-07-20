@@ -51,13 +51,13 @@ export default function AnimatedBackground() {
     <div
       id="bg-animation"
       ref={containerRef}
-      className="fixed inset-0 -z-50 overflow-hidden pointer-events-none transition-colors duration-700 bg-[#030303] text-zinc-100"
+      className="fixed inset-0 -z-50 overflow-hidden pointer-events-none transition-colors duration-700 bg-[var(--bg-base)] text-zinc-100"
     >
       {/* Premium Interactive Cursor Spotlight Glow */}
       <div
         className="absolute w-[600px] h-[600px] rounded-full opacity-20 blur-[130px] pointer-events-none transition-transform duration-500 ease-out"
         style={{
-          background: "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(59, 130, 246, 0.15) 50%, transparent 100%)",
+          background: "radial-gradient(circle, var(--spotlight-color-1) 0%, var(--spotlight-color-2) 50%, transparent 100%)",
           left: mousePosition.x - 300,
           top: mousePosition.y - 300,
         }}

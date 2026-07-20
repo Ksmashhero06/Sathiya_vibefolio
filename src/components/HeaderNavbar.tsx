@@ -11,13 +11,17 @@ import {
   ArrowRight,
   Sparkles,
   Command,
-  FileText
+  FileText,
+  Palette,
+  Check
 } from "lucide-react";
 import CommandPalette from "./CommandPalette";
 
 interface HeaderNavbarProps {
   theme: "dark" | "light";
   toggleTheme: () => void;
+  activeTheme: string;
+  setThemeAndPersist: (newTheme: any) => void;
   activeSection: string;
   scrollToSection: (id: string) => void;
   toggleChatbot: () => void;
@@ -27,6 +31,8 @@ interface HeaderNavbarProps {
 export default function HeaderNavbar({
   theme,
   toggleTheme,
+  activeTheme,
+  setThemeAndPersist,
   activeSection,
   scrollToSection,
   toggleChatbot,
@@ -34,6 +40,16 @@ export default function HeaderNavbar({
 }: HeaderNavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+
+  const themesList = [
+    { id: "neutral", label: "Dark (Neutral)", dotClass: "bg-zinc-400" },
+    { id: "purple", label: "Cyber Purple (Default)", dotClass: "bg-purple-500" },
+    { id: "emerald", label: "Emerald Green", dotClass: "bg-emerald-500" },
+    { id: "crimson", label: "Crimson Red", dotClass: "bg-red-500" },
+    { id: "sky", label: "Sky Blue", dotClass: "bg-sky-400" },
+    { id: "light", label: "Light Theme", dotClass: "bg-zinc-100 border border-zinc-300 dark:border-zinc-800" }
+  ];
 
   // Monitor scroll height to handle initial transparency vs glass blurred states
   useEffect(() => {
@@ -135,6 +151,73 @@ export default function HeaderNavbar({
               <span className="hidden sm:inline">Resume</span>
               <Download className="w-3 h-3 text-purple-300 opacity-60 group-hover:opacity-100 group-hover:translate-y-0.5 transition-all" />
             </a>
+
+            {/* Elegant Custom Theme Switcher Dropdown */}
+            <div className="relative" id="theme-switcher-dropdown">
+              <button
+                onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
+                className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-850 bg-zinc-50 dark:bg-zinc-950/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white transition-all shadow-sm cursor-pointer shrink-0 flex items-center justify-center gap-1.5"
+                title="Select portfolio color theme"
+              >
+                <Palette className="w-4 h-4 text-purple-400" />
+                <span className="hidden md:inline text-[10px] font-mono uppercase tracking-wider font-semibold">
+                  Theme
+                </span>
+              </button>
+
+              <AnimatePresence>
+                {isThemeMenuOpen && (
+                  <>
+                    {/* Invisible backdrop to dismiss dropdown on click outside */}
+                    <div
+                      className="fixed inset-0 z-40"
+                      onClick={() => setIsThemeMenuOpen(false)}
+                    />
+                    
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute right-0 mt-2 w-52 rounded-xl bg-white dark:bg-[#030303] border border-zinc-200 dark:border-zinc-900 shadow-2xl p-2 z-50 text-left"
+                    >
+                      <div className="px-2 py-1.5 border-b border-zinc-100 dark:border-zinc-900 mb-1.5">
+                        <span className="text-[9px] font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest block font-semibold">
+                          Choose Accent Theme
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 gap-1">
+                        {themesList.map((t) => {
+                          const isSelected = activeTheme === t.id;
+                          return (
+                            <button
+                              key={t.id}
+                              onClick={() => {
+                                setThemeAndPersist(t.id);
+                                setIsThemeMenuOpen(false);
+                              }}
+                              className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs font-sans transition-all text-left group cursor-pointer ${
+                                isSelected
+                                  ? "bg-purple-500/10 text-purple-400 font-semibold"
+                                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900/60"
+                              }`}
+                            >
+                              <div className="flex items-center gap-2.5">
+                                <span
+                                  className={`w-3.5 h-3.5 rounded-full shadow-inner block shrink-0 ${t.dotClass}`}
+                                />
+                                <span>{t.label}</span>
+                              </div>
+                              {isSelected && <Check className="w-3.5 h-3.5 text-purple-400 shrink-0" />}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* Dark/Light Rotating Mode Switch */}
             <button
