@@ -101,15 +101,15 @@ export default function SkillsSection() {
   // Category gradients for subtle styling highlights
   const getCategoryTheme = (category: string) => {
     switch (category) {
-      case "Programming": return "text-blue-400 border-blue-500/10 bg-blue-500/5";
-      case "AI": return "text-purple-400 border-purple-500/10 bg-purple-500/5";
-      case "Frontend": return "text-pink-400 border-pink-500/10 bg-pink-500/5";
-      case "Backend": return "text-emerald-400 border-emerald-500/10 bg-emerald-500/5";
-      case "Databases": return "text-violet-400 border-violet-500/10 bg-violet-500/5";
-      case "Cloud": return "text-sky-400 border-sky-500/10 bg-sky-500/5";
-      case "Tools": return "text-amber-400 border-amber-500/10 bg-amber-500/5";
-      case "Soft Skills": return "text-rose-400 border-rose-500/10 bg-rose-500/5";
-      default: return "text-zinc-400 border-zinc-500/10 bg-zinc-500/5";
+      case "Programming": return "text-blue-600 dark:text-blue-400 border-blue-500/20 bg-blue-500/10 dark:bg-blue-500/5";
+      case "AI": return "text-purple-600 dark:text-purple-400 border-purple-500/20 bg-purple-500/10 dark:bg-purple-500/5";
+      case "Frontend": return "text-pink-600 dark:text-pink-400 border-pink-500/20 bg-pink-500/10 dark:bg-pink-500/5";
+      case "Backend": return "text-emerald-600 dark:text-emerald-400 border-emerald-500/20 bg-emerald-500/10 dark:bg-emerald-500/5";
+      case "Databases": return "text-violet-600 dark:text-violet-400 border-violet-500/20 bg-violet-500/10 dark:bg-violet-500/5";
+      case "Cloud": return "text-sky-600 dark:text-sky-400 border-sky-500/20 bg-sky-500/10 dark:bg-sky-500/5";
+      case "Tools": return "text-amber-600 dark:text-amber-400 border-amber-500/20 bg-amber-500/10 dark:bg-amber-500/5";
+      case "Soft Skills": return "text-rose-600 dark:text-rose-400 border-rose-500/20 bg-rose-500/10 dark:bg-rose-500/5";
+      default: return "text-zinc-600 dark:text-zinc-400 border-zinc-500/20 bg-zinc-500/10 dark:bg-zinc-500/5";
     }
   };
 
@@ -124,13 +124,13 @@ export default function SkillsSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-mono text-purple-400 tracking-widest uppercase bg-purple-500/5 px-3 py-1.5 rounded-full border border-purple-500/15">
+          <span className="text-xs font-mono text-[var(--primary)] tracking-widest uppercase bg-[var(--primary)]/5 px-3 py-1.5 rounded-full border border-[var(--primary)]/15">
             Technical Stack
           </span>
-          <h2 className="text-3xl sm:text-4xl font-sans font-medium tracking-tight text-white mt-4 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-sans font-medium tracking-tight text-[var(--text-primary)] mt-4 mb-3">
             Core capabilities & <span className="gradient-text">technological depth</span>
           </h2>
-          <p className="text-sm text-zinc-400 leading-relaxed">
+          <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
             Meticulously structured stack configured for high-performance agent alignment, sub-second indexing, and elegant UI delivery.
           </p>
         </div>
@@ -146,8 +146,8 @@ export default function SkillsSection() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide transition-all border cursor-pointer ${
                   isSelected
-                    ? "bg-white border-white text-black font-semibold shadow-lg shadow-white/5 scale-105"
-                    : "glass text-zinc-400 hover:text-white hover:border-zinc-700"
+                    ? "bg-[var(--primary)] border-[var(--primary)] text-[var(--text-inverse)] font-semibold shadow-lg scale-105"
+                    : "bg-[var(--card)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)] hover:border-[var(--primary)]/50"
                 }`}
               >
                 {IconComp && <IconComp className="w-3.5 h-3.5" />}
@@ -175,10 +175,10 @@ export default function SkillsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="group relative p-5 rounded-2xl glass glow-card border border-zinc-850/80 bg-zinc-950/40 hover:bg-zinc-900/10 flex flex-col justify-between min-h-[13.5rem] h-auto transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                  className="group relative p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:bg-[var(--card-hover)] flex flex-col justify-between min-h-[13.5rem] h-auto transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 >
                   {/* Subtle hover gradient background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                   <div>
                     {/* Header: Icon + Experience badge */}
@@ -187,17 +187,17 @@ export default function SkillsSection() {
                         <SkillIcon className="w-4 h-4" />
                       </div>
                       
-                      <span className="text-[10px] font-mono tracking-wider font-semibold text-zinc-400 bg-zinc-900/80 px-2.5 py-1 rounded-full border border-zinc-800">
+                      <span className="text-[10px] font-mono tracking-wider font-semibold text-[var(--text-secondary)] bg-[var(--background-secondary)]/50 px-2.5 py-1 rounded-full border border-[var(--border)]">
                         {skill.experience}
                       </span>
                     </div>
 
                     {/* Body: Title */}
-                    <h3 className="text-sm font-semibold text-white tracking-tight mt-4 group-hover:text-purple-300 transition-colors">
+                    <h3 className="text-sm font-semibold text-[var(--text-primary)] tracking-tight mt-4 group-hover:text-[var(--primary)] transition-colors">
                       {skill.name}
                     </h3>
                     
-                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block mt-1 mb-1">
+                    <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-widest block mt-1 mb-1">
                       {skill.category}
                     </span>
 
@@ -207,9 +207,9 @@ export default function SkillsSection() {
                       if (match) {
                         const pct = match[1];
                         return (
-                          <div className="mt-2.5 w-full bg-zinc-900/60 rounded-full h-1.5 overflow-hidden border border-zinc-850">
+                          <div className="mt-2.5 w-full bg-[var(--background-secondary)] rounded-full h-1.5 overflow-hidden border border-[var(--border)]">
                             <div 
-                              className="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 h-full rounded-full" 
+                              className="bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] h-full rounded-full" 
                               style={{ width: `${pct}%` }}
                             />
                           </div>
@@ -220,15 +220,15 @@ export default function SkillsSection() {
                   </div>
 
                   {/* Footer: Projects Used pill grid */}
-                  <div className="border-t border-zinc-900/60 pt-3 mt-4">
-                    <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider block mb-1.5">
+                  <div className="border-t border-[var(--border)] pt-3 mt-4">
+                    <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-wider block mb-1.5">
                       Project Applications
                     </span>
                     <div className="flex flex-wrap gap-1">
                       {skill.projectsUsed.map((proj) => (
                         <span
                           key={proj}
-                          className="text-[9px] font-mono px-2 py-0.5 rounded bg-zinc-900/80 border border-zinc-850 text-zinc-400 hover:text-white hover:border-zinc-700 transition-colors"
+                          className="text-[9px] font-mono px-2 py-0.5 rounded bg-[var(--background-secondary)]/80 border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--primary)]/50 transition-colors"
                         >
                           {proj}
                         </span>
@@ -243,8 +243,8 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* Animated grid stats summary footer */}
-        <div className="mt-12 text-center max-w-xl mx-auto p-4 rounded-2xl border border-zinc-900 bg-zinc-950/20 text-xs text-zinc-500 font-mono flex items-center justify-center gap-2 animate-fade-in">
-          <Zap className="w-4 h-4 text-purple-400 animate-pulse" />
+        <div className="mt-12 text-center max-w-xl mx-auto p-4 rounded-2xl border border-[var(--border)] bg-[var(--card)] text-xs text-[var(--text-secondary)] font-mono flex items-center justify-center gap-2 animate-fade-in">
+          <Zap className="w-4 h-4 text-[var(--primary)] animate-pulse" />
           <span>Active filter represents {filteredSkills.length} highly integrated production-grade capability units</span>
         </div>
 

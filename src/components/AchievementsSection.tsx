@@ -292,7 +292,7 @@ function BadgeWidget({
         className="w-full h-full relative [transform-style:preserve-3d] duration-500"
       >
         {/* Front Face of the Badge */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-2xl border border-zinc-850 bg-zinc-950/70 p-5 flex flex-col justify-between items-center text-center overflow-hidden">
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-2xl border border-[var(--border)] bg-[var(--card)]/90 backdrop-blur-md p-5 flex flex-col justify-between items-center text-center overflow-hidden">
           {/* Subtle glow ring background */}
           <div
             className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-[30px] opacity-20 pointer-events-none"
@@ -312,18 +312,18 @@ function BadgeWidget({
                 className="absolute inset-0 rounded-full animate-ping opacity-15 pointer-events-none"
                 style={{ backgroundColor: colorHex }}
               />
-              <IconComponent className="w-5 h-5 text-white" style={{ color: colorHex }} />
+              <IconComponent className="w-5 h-5" style={{ color: colorHex }} />
             </div>
 
-            <span className="text-[9px] font-mono tracking-widest text-zinc-500 uppercase">
+            <span className="text-[9px] font-mono tracking-widest text-[var(--text-muted)] uppercase">
               {category}
             </span>
-            <h4 className="text-xs font-sans font-bold text-white tracking-tight leading-tight px-2">
+            <h4 className="text-xs font-sans font-bold text-[var(--text-primary)] tracking-tight leading-tight px-2">
               {title}
             </h4>
           </div>
 
-          <div className="flex items-center gap-1.5 text-[9px] font-mono text-zinc-400">
+          <div className="flex items-center gap-1.5 text-[9px] font-mono text-[var(--text-secondary)]">
             <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: colorHex }} />
             <span>UNLOCKED {date}</span>
           </div>
@@ -331,24 +331,24 @@ function BadgeWidget({
 
         {/* Back Face of the Badge (Revealing secrets/criteria) */}
         <div
-          className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl border border-zinc-800 bg-zinc-900/90 backdrop-blur-lg p-5 flex flex-col justify-between"
+          className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl border border-[var(--border)] bg-[var(--card)]/95 backdrop-blur-lg p-5 flex flex-col justify-between"
           style={{
             boxShadow: `0 0 25px ${colorHex}15`
           }}
         >
           <div className="space-y-1.5 text-left">
-            <span className="text-[8px] font-mono text-zinc-500 tracking-widest uppercase block">
+            <span className="text-[8px] font-mono text-[var(--text-muted)] tracking-widest uppercase block">
               // BADGE CREDENTIAL
             </span>
-            <h5 className="text-xs font-bold text-white leading-tight">
+            <h5 className="text-xs font-bold text-[var(--text-primary)] leading-tight">
               {title}
             </h5>
-            <p className="text-[10px] text-zinc-300 leading-relaxed font-sans mt-2">
+            <p className="text-[10px] text-[var(--text-secondary)] leading-relaxed font-sans mt-2">
               {criteria}
             </p>
           </div>
 
-          <div className="pt-2 border-t border-zinc-800/80 flex items-center justify-between text-[9px] font-mono text-zinc-400">
+          <div className="pt-2 border-t border-[var(--border)] flex items-center justify-between text-[9px] font-mono text-[var(--text-muted)]">
             <span>RATING: ELITE</span>
             <span style={{ color: colorHex }}>★ ACTIVE</span>
           </div>
@@ -526,62 +526,62 @@ export default function AchievementsSection() {
 
         {/* 1. Animated Stats Counter Cards Banner */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
-          <div className="relative group overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950/30 p-5 hover:border-zinc-800 hover:bg-zinc-900/10 transition-all duration-300">
+          <div className="relative group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]/80 p-5 hover:border-[var(--primary)]/30 hover:bg-[var(--surface-elevated)] transition-all duration-300">
             <div className="absolute top-[-50%] left-[-50%] w-40 h-40 rounded-full bg-blue-500/5 blur-[40px] pointer-events-none" />
             <div className="flex items-start justify-between">
-              <span className="text-zinc-500 text-[10px] font-mono uppercase tracking-wider block">TOTAL PROJECTS</span>
+              <span className="text-[var(--text-muted)] text-[10px] font-mono uppercase tracking-wider block">TOTAL PROJECTS</span>
               <Code className="w-4 h-4 text-blue-400/80" />
             </div>
-            <div className="text-3xl font-sans font-bold text-white mt-3 flex items-baseline gap-1">
+            <div className="text-3xl font-sans font-bold text-[var(--text-primary)] mt-3 flex items-baseline gap-1">
               <CountUp end={10} suffix="+" />
               <span className="text-xs font-mono font-normal text-blue-400">📁 Projects</span>
             </div>
-            <p className="text-[10px] text-zinc-500 font-sans mt-2.5">
+            <p className="text-[10px] text-[var(--text-secondary)] font-sans mt-2.5">
               Successfully compiled and deployed full-stack web and game projects.
             </p>
           </div>
 
-          <div className="relative group overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950/30 p-5 hover:border-zinc-800 hover:bg-zinc-900/10 transition-all duration-300">
+          <div className="relative group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]/80 p-5 hover:border-[var(--primary)]/30 hover:bg-[var(--surface-elevated)] transition-all duration-300">
             <div className="absolute top-[-50%] left-[-50%] w-40 h-40 rounded-full bg-purple-500/5 blur-[40px] pointer-events-none" />
             <div className="flex items-start justify-between">
-              <span className="text-zinc-500 text-[10px] font-mono uppercase tracking-wider block">GITHUB CONTRIBUTIONS</span>
+              <span className="text-[var(--text-muted)] text-[10px] font-mono uppercase tracking-wider block">GITHUB CONTRIBUTIONS</span>
               <GitMerge className="w-4 h-4 text-purple-400/80" />
             </div>
-            <div className="text-3xl font-sans font-bold text-white mt-3 flex items-baseline gap-1">
+            <div className="text-3xl font-sans font-bold text-[var(--text-primary)] mt-3 flex items-baseline gap-1">
               <CountUp end={461} suffix="" />
               <span className="text-xs font-mono font-normal text-purple-400">🔥 Total</span>
             </div>
-            <p className="text-[10px] text-zinc-500 font-sans mt-2.5">
+            <p className="text-[10px] text-[var(--text-secondary)] font-sans mt-2.5">
               Contributions growth: 1 in '24 &bull; 38 in '25 &bull; <span className="text-purple-400">422 in '26</span>.
             </p>
           </div>
 
-          <div className="relative group overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950/30 p-5 hover:border-zinc-800 hover:bg-zinc-900/10 transition-all duration-300">
+          <div className="relative group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]/80 p-5 hover:border-[var(--primary)]/30 hover:bg-[var(--surface-elevated)] transition-all duration-300">
             <div className="absolute top-[-50%] left-[-50%] w-40 h-40 rounded-full bg-amber-500/5 blur-[40px] pointer-events-none" />
             <div className="flex items-start justify-between">
-              <span className="text-zinc-500 text-[10px] font-mono uppercase tracking-wider block">HACKATHONS PARTICIPATED</span>
+              <span className="text-[var(--text-muted)] text-[10px] font-mono uppercase tracking-wider block">HACKATHONS PARTICIPATED</span>
               <Trophy className="w-4 h-4 text-amber-400/80" />
             </div>
-            <div className="text-3xl font-sans font-bold text-white mt-3 flex items-baseline gap-1">
+            <div className="text-3xl font-sans font-bold text-[var(--text-primary)] mt-3 flex items-baseline gap-1">
               <CountUp end={5} suffix="+" />
               <span className="text-xs font-mono font-normal text-amber-500">🎮 Events</span>
             </div>
-            <p className="text-[10px] text-zinc-500 font-sans mt-2.5">
+            <p className="text-[10px] text-[var(--text-secondary)] font-sans mt-2.5">
               Participated in global developer tournaments and security hackathons.
             </p>
           </div>
 
-          <div className="relative group overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950/30 p-5 hover:border-zinc-800 hover:bg-zinc-900/10 transition-all duration-300">
+          <div className="relative group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]/80 p-5 hover:border-[var(--primary)]/30 hover:bg-[var(--surface-elevated)] transition-all duration-300">
             <div className="absolute top-[-50%] left-[-50%] w-40 h-40 rounded-full bg-pink-500/5 blur-[40px] pointer-events-none" />
             <div className="flex items-start justify-between">
-              <span className="text-zinc-500 text-[10px] font-mono uppercase tracking-wider block">VERIFIED CREDENTIALS</span>
+              <span className="text-[var(--text-muted)] text-[10px] font-mono uppercase tracking-wider block">VERIFIED CREDENTIALS</span>
               <Award className="w-4 h-4 text-pink-400/80" />
             </div>
-            <div className="text-3xl font-sans font-bold text-white mt-3 flex items-baseline gap-1">
+            <div className="text-3xl font-sans font-bold text-[var(--text-primary)] mt-3 flex items-baseline gap-1">
               <CountUp end={UNIFIED_CREDENTIALS_DATA.length} suffix="" />
               <span className="text-xs font-mono font-normal text-pink-400">🏅 Badges</span>
             </div>
-            <p className="text-[10px] text-zinc-500 font-sans mt-2.5">
+            <p className="text-[10px] text-[var(--text-secondary)] font-sans mt-2.5">
               Professional IT certifications issued via Cisco and IBM on Credly.
             </p>
           </div>
@@ -591,8 +591,8 @@ export default function AchievementsSection() {
         <div className="mb-24 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-purple-400" />
-              <span className="text-xs font-mono uppercase tracking-wider text-zinc-300">
+              <ShieldCheck className="w-4 h-4 text-[var(--primary)]" />
+              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">
                 Interactive Achievement Badges
               </span>
             </div>
@@ -600,7 +600,7 @@ export default function AchievementsSection() {
               href="https://www.credly.com/users/sathiyamoorthi-k.fc4892da/badges/credly"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] sm:text-xs font-mono font-medium text-purple-400 hover:text-white bg-purple-500/5 hover:bg-purple-600/20 border border-purple-500/15 hover:border-purple-500/30 rounded-lg transition-all duration-300 shadow-sm shadow-purple-500/5 cursor-pointer max-w-max"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] sm:text-xs font-mono font-medium text-[var(--primary)] hover:text-[var(--text-inverse)] bg-[var(--primary)]/5 hover:bg-[var(--primary)] border border-[var(--primary)]/15 hover:border-[var(--primary)] rounded-lg transition-all duration-300 shadow-sm shadow-[var(--primary)]/5 cursor-pointer max-w-max"
             >
               <span>Verify all on Credly</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -626,16 +626,16 @@ export default function AchievementsSection() {
         <div className="space-y-10">
           
           {/* Subheading + Filter System */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-5 border-b border-zinc-900/40">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-5 border-b border-[var(--border)]">
             <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-purple-400" />
-              <span className="text-xs font-mono uppercase tracking-wider text-zinc-300">
+              <Zap className="w-4 h-4 text-[var(--primary)]" />
+              <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">
                 Milestones & Timeline Log
               </span>
             </div>
 
             {/* Alternating Category Selectors */}
-            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-zinc-950/60 border border-zinc-900/80 overflow-x-auto max-w-full no-scrollbar">
+            <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[var(--card)]/60 border border-[var(--border)] overflow-x-auto max-w-full no-scrollbar">
               {([
                 "All",
                 "Hackathons",
@@ -651,13 +651,13 @@ export default function AchievementsSection() {
                     key={tab}
                     onClick={() => setActiveTab(tab)}
                     className={`relative px-3 py-1.5 text-[11px] font-mono rounded-lg transition-all cursor-pointer shrink-0 ${
-                      isActive ? "text-white font-medium" : "text-zinc-500 hover:text-zinc-300"
+                      isActive ? "text-[var(--text-inverse)] font-medium" : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                     }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeAchievementsFilter"
-                        className="absolute inset-0 bg-zinc-900 rounded-lg border border-zinc-850 shadow-sm"
+                        className="absolute inset-0 bg-[var(--primary)] rounded-lg border border-[var(--primary)] shadow-sm"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -703,7 +703,7 @@ export default function AchievementsSection() {
                           style={{ backgroundColor: theme.colorHex }}
                         />
                         <span
-                          className="w-3 h-3 rounded-full bg-zinc-950 border-2 flex items-center justify-center"
+                          className="w-3 h-3 rounded-full bg-[var(--background)] border-2 flex items-center justify-center"
                           style={{ borderColor: theme.colorHex }}
                         >
                           <span className="w-1 h-1 rounded-full" style={{ backgroundColor: theme.colorHex }} />
@@ -720,7 +720,7 @@ export default function AchievementsSection() {
                         <div
                           onMouseEnter={() => setHoveredId(milestone.id)}
                           onMouseLeave={() => setHoveredId(null)}
-                          className={`relative group rounded-2xl border border-zinc-850 bg-zinc-900/10 backdrop-blur-md p-5 sm:p-8 hover:bg-zinc-900/25 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 overflow-hidden ${theme.border}`}
+                          className={`relative group rounded-2xl border border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-md p-5 sm:p-8 hover:bg-[var(--surface-elevated)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-300 overflow-hidden ${theme.border}`}
                           style={{
                             boxShadow: isHovered
                               ? `0 0 35px ${theme.glow}`
@@ -731,12 +731,12 @@ export default function AchievementsSection() {
                           <div
                             className="absolute top-0 left-0 right-0 h-[1.5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                             style={{
-                              background: `linear-gradient(to right, ${theme.colorHex}, #ffffff, ${theme.colorHex})`
+                              background: `linear-gradient(to right, ${theme.colorHex}, var(--primary), ${theme.colorHex})`
                             }}
                           />
 
                           {/* Top Card Layout: Icon, Badge, Category, Date */}
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-zinc-900/60">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[var(--border)]">
                             
                             <div className="flex items-center gap-4">
                               {/* Glowing Trophy Icon with dynamic hover feedback */}
@@ -746,17 +746,17 @@ export default function AchievementsSection() {
                                 <span className="text-[10px] font-mono uppercase tracking-wider block" style={{ color: theme.colorHex }}>
                                   {milestone.category}
                                 </span>
-                                <h3 className="text-base sm:text-lg font-sans font-medium text-white mt-1 group-hover:text-zinc-200 transition-colors leading-snug">
+                                <h3 className="text-base sm:text-lg font-sans font-medium text-[var(--text-primary)] mt-1 transition-colors leading-snug">
                                   {milestone.title}
                                 </h3>
-                                <span className="text-xs text-zinc-400 block mt-0.5 font-sans">
+                                <span className="text-xs text-[var(--text-secondary)] block mt-0.5 font-sans">
                                   {milestone.subtitle}
                                 </span>
                               </div>
                             </div>
 
                             {/* Date Badge */}
-                            <div className="flex items-center gap-1.5 text-[9px] font-mono text-zinc-400 bg-zinc-950/60 border border-zinc-900 px-3 py-1 rounded-full shrink-0 w-fit">
+                            <div className="flex items-center gap-1.5 text-[9px] font-mono text-[var(--text-secondary)] bg-[var(--surface)] border border-[var(--border)] px-3 py-1 rounded-full shrink-0 w-fit">
                               <Calendar className="w-3 h-3 text-purple-400" />
                               <span>{milestone.date}</span>
                             </div>
@@ -767,20 +767,20 @@ export default function AchievementsSection() {
                           <div className="mt-6 space-y-5">
                             
                             {/* Rich Narrative */}
-                            <p className="text-xs text-zinc-300 leading-relaxed font-sans">
+                            <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-sans">
                               {milestone.description}
                             </p>
 
                             {/* Visual KPI / Metric Indicator */}
-                            <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-950/50 border border-zinc-900/80">
-                              <div className="p-1.5 rounded-lg bg-zinc-900 flex items-center justify-center">
+                            <div className="flex items-center gap-3 p-3 rounded-xl bg-[var(--surface)] border border-[var(--border)]">
+                              <div className="p-1.5 rounded-lg bg-[var(--card)] flex items-center justify-center">
                                 <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
                               </div>
                               <div>
-                                <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block">
+                                <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-widest block">
                                   VERIFIED IMPACT / OUTCOME
                                 </span>
-                                <span className="text-sm font-sans font-bold text-white tracking-tight">
+                                <span className="text-sm font-sans font-bold text-[var(--text-primary)] tracking-tight">
                                   {milestone.metrics}
                                 </span>
                               </div>
@@ -788,14 +788,14 @@ export default function AchievementsSection() {
 
                             {/* Skills Unlocked (Interactive elements) */}
                             <div className="space-y-2">
-                              <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block">
+                              <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-widest block">
                                 // COMPETENCY AREA UNLOCKED
                               </span>
                               <div className="flex flex-wrap gap-1.5">
                                 {milestone.skillsUnlocked.map((skill) => (
                                   <span
                                     key={skill}
-                                    className="text-[10px] font-mono text-zinc-400 bg-zinc-950/40 border border-zinc-900 px-2 py-0.5 rounded"
+                                    className="text-[10px] font-mono text-[var(--text-secondary)] bg-[var(--surface)] border border-[var(--border)] px-2 py-0.5 rounded"
                                   >
                                     ✦ {skill}
                                   </span>
@@ -806,14 +806,14 @@ export default function AchievementsSection() {
                             {/* Technologies Used */}
                             {milestone.technologies && milestone.technologies.length > 0 && (
                               <div className="space-y-2 pt-1">
-                                <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block">
+                                <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-widest block">
                                   // RELEVANT DEV STACK
                                 </span>
                                 <div className="flex flex-wrap gap-1">
                                   {milestone.technologies.map((tech) => (
                                     <span
                                       key={tech}
-                                      className="text-[9px] font-mono text-zinc-500 bg-zinc-950/20 border border-zinc-900/50 px-2 py-0.5 rounded"
+                                      className="text-[9px] font-mono text-[var(--text-muted)] bg-[var(--surface)]/60 border border-[var(--border)]/50 px-2 py-0.5 rounded"
                                     >
                                       {tech}
                                     </span>
@@ -826,17 +826,17 @@ export default function AchievementsSection() {
 
                           {/* Footer Action Panel: Verification Link */}
                           {milestone.link && (
-                            <div className="mt-6 pt-4 border-t border-zinc-900/60 flex items-center justify-between">
-                              <span className="text-[9px] font-mono text-zinc-500 flex items-center gap-1.5">
+                            <div className="mt-6 pt-4 border-t border-[var(--border)] flex items-center justify-between">
+                              <span className="text-[9px] font-mono text-[var(--text-muted)] flex items-center gap-1.5">
                                 <Cpu className="w-3 h-3 text-purple-400" />
-                                Badge: <span className="text-zinc-300 font-semibold">{milestone.badgeName}</span>
+                                Badge: <span className="text-[var(--text-secondary)] font-semibold">{milestone.badgeName}</span>
                               </span>
 
                               <a
                                 href={milestone.link}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-1.5 text-[10px] font-mono text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                                className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
                               >
                                 <span>Learn More</span>
                                 <ArrowUpRight className="w-3.5 h-3.5" />

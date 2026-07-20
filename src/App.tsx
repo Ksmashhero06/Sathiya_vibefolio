@@ -186,20 +186,20 @@ export default function App() {
         {/* HERO SECTION */}
         <section
           id="hero"
-          className="min-h-screen min-h-[100svh] lg:min-h-0 lg:h-[calc(100vh-3.5rem)] lg:h-[calc(100svh-3.5rem)] flex flex-col justify-center relative border-b border-zinc-900/40 overflow-hidden"
+          className="min-h-screen min-h-[100svh] lg:min-h-0 lg:h-[calc(100vh-3.5rem)] lg:h-[calc(100svh-3.5rem)] flex flex-col justify-center relative border-b border-[var(--border)] overflow-hidden"
         >
           {/* Ambient glowing orb meshes inside background */}
-          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[var(--primary)]/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[var(--secondary)]/5 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-4 sm:py-6 relative flex flex-col justify-between items-center h-full">
             
             {/* Status indicator pill */}
             <div className="w-full flex justify-center pb-2 pt-1">
-              <div className="inline-flex items-center gap-2 bg-zinc-950/80 border border-zinc-850/80 w-fit px-3.5 py-1.5 rounded-full text-[11px] font-medium text-zinc-300 mx-auto animate-fade-in">
+              <div className="inline-flex items-center gap-2 bg-[var(--card)] border border-[var(--border)] w-fit px-3.5 py-1.5 rounded-full text-[11px] font-medium text-[var(--text-secondary)] mx-auto animate-fade-in shadow-sm">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--success)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--success)]"></span>
                 </span>
                 <span>Available for enterprise consultations & elite contracts</span>
               </div>
@@ -208,10 +208,10 @@ export default function App() {
             {/* Premium Headline with Name, Title & Typing Effect - Grouped & Compacted */}
             <div className="w-full flex flex-col items-center justify-center my-auto space-y-4 max-w-4xl">
               <div className="space-y-1 w-full">
-                <span className="text-[10px] sm:text-xs font-mono tracking-[0.25em] text-purple-400 uppercase font-semibold block animate-pulse">
+                <span className="text-[10px] sm:text-xs font-mono tracking-[0.25em] text-[var(--primary)] uppercase font-semibold block animate-pulse">
                   SATHIYAMOORTHI K &bull; FULL-STACK DEVELOPER & GAME DESIGNER
                 </span>
-                <h1 className="text-[clamp(1.75rem,5.5vw,3rem)] sm:text-[clamp(2.5rem,5.2vw,4rem)] lg:text-[clamp(2.5rem,4.5vw,4.5rem)] font-display font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.15] break-words">
+                <h1 className="text-[clamp(1.75rem,5.5vw,3rem)] sm:text-[clamp(2.5rem,5.2vw,4rem)] lg:text-[clamp(2.5rem,4.5vw,4.5rem)] font-display font-bold tracking-tight text-[var(--text-primary)] max-w-4xl mx-auto leading-[1.15] break-words">
                   Developing systems for <br className="hidden sm:inline" />
                   <AnimatedTyping words={[
                     "responsive web design",
@@ -221,7 +221,7 @@ export default function App() {
                   ]} />
                 </h1>
               </div>
-              <p className="text-zinc-400 text-xs sm:text-sm md:text-[15px] max-w-[700px] mx-auto leading-[1.7] px-4">
+              <p className="text-[var(--text-secondary)] text-xs sm:text-sm md:text-[15px] max-w-[700px] mx-auto leading-[1.7] px-4">
                 Information Technology student at IFET College of Engineering with hands-on experience building AI-powered and full-stack web applications. Passionate about artificial intelligence, computer vision, automation, and solving real-world problems through technology.
               </p>
 
@@ -229,21 +229,21 @@ export default function App() {
               <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 max-w-2xl mx-auto w-full pt-1">
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="w-full sm:w-auto bg-white text-black px-5 py-2 rounded-xl font-semibold text-xs sm:text-sm hover:bg-zinc-200 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-white/5 active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto bg-[var(--primary)] text-[var(--text-inverse)] px-5 py-2 rounded-xl font-semibold text-xs sm:text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   <span>Initiate Consult</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => scrollToSection("projects")}
-                  className="w-full sm:w-auto glass px-5 py-2 rounded-xl font-medium text-xs sm:text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/30 transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto border border-[var(--border)] bg-[var(--surface)] px-5 py-2 rounded-xl font-medium text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--card)] transition-all flex items-center justify-center gap-2 active:scale-95 cursor-pointer whitespace-nowrap"
                 >
-                  <Terminal className="w-4 h-4 text-purple-400 animate-pulse" />
+                  <Terminal className="w-4 h-4 text-[var(--primary)] animate-pulse" />
                   <span>Explore Projects</span>
                 </button>
                 
                 {/* Vertical divider on desktop */}
-                <div className="hidden sm:block w-px h-5 bg-zinc-800 mx-1" />
+                <div className="hidden sm:block w-px h-5 bg-[var(--border)] mx-1" />
 
                 {/* Social icons integrated directly into hero actions */}
                 <div className="flex items-center gap-2 mt-2 sm:mt-0 flex-wrap justify-center">
@@ -251,7 +251,7 @@ export default function App() {
                     href="https://github.com/Ksmashhero06"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl bg-zinc-900/40 border border-zinc-850 hover:border-zinc-700 hover:bg-zinc-900 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                    className="p-2 rounded-xl bg-[var(--card)]/40 border border-[var(--border)] hover:border-[var(--primary)] hover:bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
                     title="GitHub Profile"
                   >
                     <Github className="w-4 h-4" />
@@ -260,7 +260,7 @@ export default function App() {
                     href="https://www.linkedin.com/in/sathiyamoorthi-k-336a79307/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl bg-zinc-900/40 border border-zinc-850 hover:border-zinc-700 hover:bg-zinc-900 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                    className="p-2 rounded-xl bg-[var(--card)]/40 border border-[var(--border)] hover:border-[var(--primary)] hover:bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
                     title="LinkedIn Profile"
                   >
                     <Linkedin className="w-4 h-4" />
@@ -269,7 +269,7 @@ export default function App() {
                     href="https://x.com/Ksmashhero06"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl bg-zinc-900/40 border border-zinc-850 hover:border-zinc-700 hover:bg-zinc-900 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                    className="p-2 rounded-xl bg-[var(--card)]/40 border border-[var(--border)] hover:border-[var(--primary)] hover:bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
                     title="Twitter Profile"
                   >
                     <Twitter className="w-4 h-4" />
@@ -278,7 +278,7 @@ export default function App() {
                     href="https://www.instagram.com/kkssathiyamoorthi06/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xl bg-zinc-900/40 border border-zinc-850 hover:border-zinc-700 hover:bg-zinc-900 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                    className="p-2 rounded-xl bg-[var(--card)]/40 border border-[var(--border)] hover:border-[var(--primary)] hover:bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
                     title="Instagram Profile"
                   >
                     <Instagram className="w-4 h-4" />
@@ -288,34 +288,34 @@ export default function App() {
             </div>
 
             {/* Bottom Section: Compact Metrics and Scroll Indicator */}
-            <div className="w-full flex flex-col items-center mt-auto pt-4 border-t border-zinc-900/40">
+            <div className="w-full flex flex-col items-center mt-auto pt-4 border-t border-[var(--border)]">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 max-w-4xl w-full">
-                <div className="glass glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
-                  <span className="text-zinc-500 text-[9px] font-semibold uppercase tracking-wider">Projects Built</span>
-                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-white">8+</div>
-                  <div className="w-full h-1 bg-zinc-800/60 rounded-full mt-2 overflow-hidden">
-                    <div className="w-4/5 h-full bg-purple-500 transition-all duration-500 group-hover:bg-purple-400"></div>
+                <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
+                  <span className="text-[var(--text-muted)] text-[9px] font-semibold uppercase tracking-wider">Projects Built</span>
+                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-[var(--text-primary)]">8+</div>
+                  <div className="w-full h-1 bg-[var(--border)]/60 rounded-full mt-2 overflow-hidden">
+                    <div className="w-4/5 h-full bg-[var(--primary)] transition-all duration-500 group-hover:opacity-80"></div>
                   </div>
                 </div>
-                <div className="glass glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
-                  <span className="text-zinc-500 text-[9px] font-semibold uppercase tracking-wider">Internships</span>
-                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-white">2</div>
-                  <div className="w-full h-1 bg-zinc-800/60 rounded-full mt-2 overflow-hidden">
-                    <div className="w-2/3 h-full bg-blue-500 transition-all duration-500 group-hover:bg-blue-400"></div>
+                <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
+                  <span className="text-[var(--text-muted)] text-[9px] font-semibold uppercase tracking-wider">Internships</span>
+                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-[var(--text-primary)]">2</div>
+                  <div className="w-full h-1 bg-[var(--border)]/60 rounded-full mt-2 overflow-hidden">
+                    <div className="w-2/3 h-full bg-[var(--primary)] transition-all duration-500 group-hover:opacity-80"></div>
                   </div>
                 </div>
-                <div className="glass glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
-                  <span className="text-zinc-500 text-[9px] font-semibold uppercase tracking-wider">Certifications</span>
-                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-white">12+</div>
-                  <div className="w-full h-1 bg-zinc-800/60 rounded-full mt-2 overflow-hidden">
-                    <div className="w-11/12 h-full bg-purple-500 transition-all duration-500 group-hover:bg-purple-400"></div>
+                <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
+                  <span className="text-[var(--text-muted)] text-[9px] font-semibold uppercase tracking-wider">Certifications</span>
+                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-[var(--text-primary)]">12+</div>
+                  <div className="w-full h-1 bg-[var(--border)]/60 rounded-full mt-2 overflow-hidden">
+                    <div className="w-11/12 h-full bg-[var(--primary)] transition-all duration-500 group-hover:opacity-80"></div>
                   </div>
                 </div>
-                <div className="glass glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
-                  <span className="text-zinc-500 text-[9px] font-semibold uppercase tracking-wider">Hackathons</span>
-                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-white">5+</div>
-                  <div className="w-full h-1 bg-zinc-800/60 rounded-full mt-2 overflow-hidden">
-                    <div className="w-3/4 h-full bg-blue-500 transition-all duration-500 group-hover:bg-blue-400"></div>
+                <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
+                  <span className="text-[var(--text-muted)] text-[9px] font-semibold uppercase tracking-wider">Hackathons</span>
+                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-[var(--text-primary)]">5+</div>
+                  <div className="w-full h-1 bg-[var(--border)]/60 rounded-full mt-2 overflow-hidden">
+                    <div className="w-3/4 h-full bg-[var(--primary)] transition-all duration-500 group-hover:opacity-80"></div>
                   </div>
                 </div>
               </div>

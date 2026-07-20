@@ -184,23 +184,23 @@ export default function AboutSection() {
   const [portraitSrc, setPortraitSrc] = useState<string>("/developer_portrait.jpg");
 
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 border-b border-zinc-900/40 relative scroll-mt-20 overflow-hidden">
+    <section id="about" className="py-16 sm:py-20 md:py-24 border-b border-[var(--border)] relative scroll-mt-20 overflow-hidden">
       
       {/* Absolute Decorative Glow Mesh */}
-      <div className="absolute top-[20%] left-[-15%] w-[400px] h-[400px] bg-purple-900/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[-15%] w-[450px] h-[450px] bg-blue-900/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[-15%] w-[400px] h-[400px] bg-[var(--primary)]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[-15%] w-[450px] h-[450px] bg-[var(--secondary)]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-mono text-purple-400 tracking-widest uppercase bg-purple-500/5 px-3 py-1.5 rounded-full border border-purple-500/15">
+          <span className="text-xs font-mono text-[var(--primary)] tracking-widest uppercase bg-[var(--primary)]/5 px-3 py-1.5 rounded-full border border-[var(--primary)]/15">
             Operational History
           </span>
-          <h2 className="text-3xl sm:text-4xl font-sans font-medium tracking-tight text-white mt-4 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-sans font-medium tracking-tight text-[var(--text-primary)] mt-4 mb-3">
             The architect's journey & <span className="gradient-text">machine synthesis</span>
           </h2>
-          <p className="text-sm text-zinc-400 leading-relaxed">
+          <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
             Unveiling the evolution of an engineer dedicated to fusing cognitive algorithms with pristine user experiences.
           </p>
         </div>
@@ -210,16 +210,16 @@ export default function AboutSection() {
           
           {/* Left Side: Professional Photo / Avatar Badge */}
           <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="relative w-full max-w-sm aspect-square rounded-3xl p-[1px] bg-gradient-to-br from-zinc-800 via-zinc-900 to-zinc-950 overflow-hidden group">
+            <div className="relative w-full max-w-sm aspect-square rounded-3xl p-[1px] bg-gradient-to-br from-[var(--border)] to-[var(--primary)]/10 overflow-hidden group">
               
               {/* Outer frame glow boundary */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--primary)]/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               {/* Core card body with modern professional developer portrait fallback */}
-              <div className="w-full h-full bg-[#0a0a0c] rounded-3xl p-3 flex flex-col justify-between relative overflow-hidden">
+              <div className="w-full h-full bg-[var(--card)] rounded-3xl p-3 flex flex-col justify-between relative overflow-hidden">
                 
                 {/* Photo frame container */}
-                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-zinc-900/50 flex items-center justify-center border border-zinc-800/40">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[var(--background-secondary)]/50 flex items-center justify-center border border-[var(--border)]">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
                   
                   {/* Photo image with referrerPolicy to prevent load restrictions */}
@@ -242,16 +242,16 @@ export default function AboutSection() {
                   />
 
                   {/* Absolute active overlays */}
-                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-zinc-950/80 backdrop-blur-md border border-zinc-800 px-3 py-1 rounded-full text-[10px] font-mono font-medium text-zinc-400">
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[var(--card)]/80 backdrop-blur-md border border-[var(--border)] px-3 py-1 rounded-full text-[10px] font-mono font-medium text-[var(--text-secondary)]">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                     <span>SYSTEM CORE ONLINE</span>
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4 z-20 text-left">
-                    <span className="text-[9px] font-mono text-purple-400 tracking-wider uppercase block">
+                    <span className="text-[9px] font-mono text-[var(--primary)] tracking-wider uppercase block">
                       Full-Stack & Game Developer
                     </span>
-                    <h4 className="text-sm font-semibold text-white mt-0.5">SATHIYAMOORTHI K</h4>
+                    <h4 className="text-sm font-semibold text-[#ffffff] mt-0.5">SATHIYAMOORTHI K</h4>
                   </div>
                 </div>
 
@@ -262,31 +262,31 @@ export default function AboutSection() {
           {/* Right Side: The Story / Bio Details */}
           <div className="lg:col-span-7 space-y-6">
             <div>
-              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em] block mb-2">
+              <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-[0.2em] block mb-2">
                 // GRADUATE CONTEXT
               </span>
-              <h3 className="text-2xl font-sans font-medium text-white tracking-tight leading-tight">
+              <h3 className="text-2xl font-sans font-medium text-[var(--text-primary)] tracking-tight leading-tight">
                 IT Graduate leveraging full-stack web development, cloud technologies, AI/ML, and Unreal Engine to compile robust digital solutions.
               </h3>
             </div>
             
-            <p className="text-sm text-zinc-400 leading-relaxed">
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
               I am an Information Technology graduate with a strong foundation in modern web architectures, game design workflows, and smart integrations. Over my training and remote collaborations, I have focused on writing highly optimized code, designing fluid responsive user interfaces, and organizing robust backend databases using Python, Flask, and Unreal Engine.
             </p>
 
-            <p className="text-sm text-zinc-400 leading-relaxed">
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
               My passion lies in continuous learning and applying analytical problem-solving skills to complex system challenges. From managing distributed intern teams as a Web Squad Lead to competing in national hackathons and math competitions, I am dedicated to producing high-quality deliverables that drive real-world impact.
             </p>
 
-            {/* Core Competency Tags */}
+            {/* Core Competency Tags - High contrast accent backgrounds with always white text */}
             <div className="flex flex-wrap gap-2 pt-3">
-              <span className="text-[11px] font-mono px-3 py-1 rounded-lg bg-zinc-900/50 border border-zinc-850 text-purple-400">
+              <span className="text-[11px] font-mono px-3 py-1 rounded-lg bg-[var(--primary)] border border-[var(--primary)] text-[var(--text-inverse)] font-medium shadow-sm">
                 &lt;Full-Stack Web&gt;
               </span>
-              <span className="text-[11px] font-mono px-3 py-1 rounded-lg bg-zinc-900/50 border border-zinc-850 text-blue-400">
+              <span className="text-[11px] font-mono px-3 py-1 rounded-lg bg-[var(--primary)] border border-[var(--primary)] text-[var(--text-inverse)] font-medium shadow-sm">
                 &lt;Unreal Engine 3&gt;
               </span>
-              <span className="text-[11px] font-mono px-3 py-1 rounded-lg bg-zinc-900/50 border border-zinc-850 text-pink-400">
+              <span className="text-[11px] font-mono px-3 py-1 rounded-lg bg-[var(--primary)] border border-[var(--primary)] text-[var(--text-inverse)] font-medium shadow-sm">
                 &lt;Junior Data Analyst&gt;
               </span>
             </div>
@@ -295,20 +295,20 @@ export default function AboutSection() {
         </div>
 
         {/* EDUCATION SEGMENT */}
-        <div className="max-w-4xl mx-auto mb-16 glass p-6 sm:p-8 rounded-2xl border border-zinc-800 bg-zinc-950/40 relative overflow-hidden group">
+        <div className="max-w-4xl mx-auto mb-16 border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8 rounded-2xl relative overflow-hidden group">
           <div className="absolute top-[-20%] right-[-10%] w-64 h-64 rounded-full bg-blue-500/5 blur-[80px] pointer-events-none" />
           
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-zinc-900">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-[var(--border)]">
             <div>
-              <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest bg-purple-500/5 px-2.5 py-1 rounded-full border border-purple-500/15">
+              <span className="text-[10px] font-mono text-[var(--primary)] uppercase tracking-widest bg-[var(--primary)]/5 px-2.5 py-1 rounded-full border border-[var(--primary)]/15">
                 // ACADEMIC FOUNDATION
               </span>
-              <h3 className="text-xl font-bold text-white mt-2.5 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mt-2.5 flex items-center gap-2">
                 Education & Under Graduation
               </h3>
             </div>
             <div className="text-left md:text-right">
-              <span className="text-xs font-mono bg-zinc-900 border border-zinc-800 text-zinc-400 px-3 py-1.5 rounded-xl font-semibold">
+              <span className="text-xs font-mono bg-[var(--surface)] border border-[var(--border)] text-[var(--text-secondary)] px-3 py-1.5 rounded-xl font-semibold">
                 🎓 2023 – 2027
               </span>
             </div>
@@ -317,38 +317,38 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-6">
             <div className="md:col-span-7 space-y-3">
               <div>
-                <h4 className="text-base font-semibold text-white">B.Tech – Information Technology</h4>
+                <h4 className="text-base font-semibold text-[var(--text-primary)]">B.Tech – Information Technology</h4>
                 <a 
                   href="https://ifet.ac.in/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-xs text-purple-400 hover:text-purple-300 font-medium inline-flex items-center gap-1.5 transition-colors mt-1 group/link"
+                  className="text-xs text-[var(--primary)] hover:opacity-80 font-medium inline-flex items-center gap-1.5 transition-colors mt-1 group/link"
                 >
                   <span>IFET College of Engineering, Villupuram</span>
                   <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                 </a>
               </div>
               
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                 Pursuing comprehensive training in Applied System Design, Database Structures, and Software Methodologies, actively bridging technical models with modern application setups.
               </p>
             </div>
 
-            <div className="md:col-span-5 space-y-2.5 bg-zinc-950/60 p-4.5 rounded-2xl border border-zinc-900">
-              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
+            <div className="md:col-span-5 space-y-2.5 bg-[var(--surface)] p-4.5 rounded-2xl border border-[var(--border)]">
+              <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider block">
                 Academic Focus
               </span>
               <div className="space-y-1.5">
-                <div className="flex items-start gap-2 text-xs text-zinc-300">
-                  <span className="text-purple-400 mt-0.5">●</span>
+                <div className="flex items-start gap-2 text-xs text-[var(--text-secondary)]">
+                  <span className="text-[var(--primary)] mt-0.5">●</span>
                   <span>Focus on applied development & system design</span>
                 </div>
-                <div className="flex items-start gap-2 text-xs text-zinc-300">
-                  <span className="text-purple-400 mt-0.5">●</span>
+                <div className="flex items-start gap-2 text-xs text-[var(--text-secondary)]">
+                  <span className="text-[var(--primary)] mt-0.5">●</span>
                   <span>Active in project-driven learning</span>
                 </div>
-                <div className="flex items-start gap-2 text-xs text-zinc-300">
-                  <span className="text-purple-400 mt-0.5">●</span>
+                <div className="flex items-start gap-2 text-xs text-[var(--text-secondary)]">
+                  <span className="text-[var(--primary)] mt-0.5">●</span>
                   <span>Strong base in programming and data systems</span>
                 </div>
               </div>
@@ -360,60 +360,60 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16">
           
           {/* Stat 1: Projects */}
-          <div className="glass glow-card p-6 rounded-2xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
+          <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-6 rounded-2xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
             <div className="flex justify-between items-start">
-              <span className="text-zinc-500 text-[10px] font-semibold uppercase tracking-wider">
+              <span className="text-[var(--text-muted)] text-[10px] font-semibold uppercase tracking-wider">
                 Total Projects
               </span>
-              <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400">
+              <div className="p-2 rounded-lg bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]">
                 <Code className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-4">
-              <span className="text-3xl font-bold text-white tracking-tight">
+              <span className="text-3xl font-bold text-[var(--text-primary)] tracking-tight">
                 <AnimatedCounter value="10+" />
               </span>
-              <p className="text-[11px] text-zinc-500 mt-1 font-mono leading-tight">
+              <p className="text-[11px] text-[var(--text-muted)] mt-1 font-mono leading-tight">
                 Deployed full-stack systems
               </p>
             </div>
           </div>
 
           {/* Stat 2: Certifications */}
-          <div className="glass glow-card p-6 rounded-2xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
+          <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-6 rounded-2xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
             <div className="flex justify-between items-start">
-              <span className="text-zinc-500 text-[10px] font-semibold uppercase tracking-wider">
+              <span className="text-[var(--text-muted)] text-[10px] font-semibold uppercase tracking-wider">
                 Certifications
               </span>
-              <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400">
+              <div className="p-2 rounded-lg bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]">
                 <Award className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-4">
-              <span className="text-3xl font-bold text-white tracking-tight">
+              <span className="text-3xl font-bold text-[var(--text-primary)] tracking-tight">
                 <AnimatedCounter value={`${UNIFIED_CREDENTIALS_DATA.length}`} />
               </span>
-              <p className="text-[11px] text-zinc-500 mt-1 font-mono leading-tight">
+              <p className="text-[11px] text-[var(--text-muted)] mt-1 font-mono leading-tight">
                 Verified developer credentials
               </p>
             </div>
           </div>
 
           {/* Stat 3: Hackathons */}
-          <div className="glass glow-card p-6 rounded-2xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
+          <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-6 rounded-2xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
             <div className="flex justify-between items-start">
-              <span className="text-zinc-500 text-[10px] font-semibold uppercase tracking-wider">
+              <span className="text-[var(--text-muted)] text-[10px] font-semibold uppercase tracking-wider">
                 Hackathons Participated
               </span>
-              <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400">
+              <div className="p-2 rounded-lg bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)]">
                 <Trophy className="w-4 h-4" />
               </div>
             </div>
             <div className="mt-4">
-              <span className="text-3xl font-bold text-white tracking-tight">
+              <span className="text-3xl font-bold text-[var(--text-primary)] tracking-tight">
                 <AnimatedCounter value="5+" />
               </span>
-              <p className="text-[11px] text-zinc-500 mt-1 font-mono leading-tight">
+              <p className="text-[11px] text-[var(--text-muted)] mt-1 font-mono leading-tight">
                 Global tournaments & summits
               </p>
             </div>
@@ -425,10 +425,10 @@ export default function AboutSection() {
         <div className="space-y-8 max-w-4xl mx-auto">
           
           <div className="text-center md:text-left">
-            <span className="text-xs font-mono text-purple-400 tracking-wider">
+            <span className="text-xs font-mono text-[var(--primary)] tracking-wider">
               [ TIMELINE_INDEXER ]
             </span>
-            <h3 className="text-lg font-medium text-white tracking-tight mt-1">
+            <h3 className="text-lg font-medium text-[var(--text-primary)] tracking-tight mt-1">
               Select timeline node to inspect structural phases
             </h3>
           </div>
@@ -451,15 +451,15 @@ export default function AboutSection() {
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                     className={`w-full flex items-center justify-between p-3.5 rounded-xl text-left transition-all relative cursor-pointer ${
                       isActive
-                        ? "bg-zinc-900 border border-zinc-800 text-white shadow-xl"
-                        : "bg-zinc-950/20 border border-zinc-900/40 text-zinc-400 hover:text-white hover:bg-zinc-900/20"
+                        ? "bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] shadow-md"
+                        : "bg-[var(--card)] border border-[var(--border)]/60 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface)]"
                     }`}
                   >
                     {/* Glowing Left Border Marker */}
                     {isActive && (
                       <motion.div
                         layoutId="active-indicator"
-                        className="absolute left-0 top-3 bottom-3 w-1 rounded-r bg-gradient-to-b from-purple-500 to-blue-500"
+                        className="absolute left-0 top-3 bottom-3 w-1 rounded-r bg-[var(--primary)]"
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                     )}
@@ -467,19 +467,19 @@ export default function AboutSection() {
                     <div className="flex items-center gap-3 pl-2">
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center border transition-all ${
                         isActive
-                          ? "bg-purple-500/10 border-purple-500/20 text-purple-400"
-                          : "bg-zinc-900/50 border-zinc-850 text-zinc-500"
+                          ? "bg-[var(--primary)]/10 border-[var(--primary)]/20 text-[var(--primary)]"
+                          : "bg-[var(--surface)] border-[var(--border)] text-[var(--text-muted)]"
                       }`}>
                         <EventIcon className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-semibold">{event.title}</div>
-                        <div className="text-[10px] text-zinc-500 font-mono">{event.year}</div>
+                        <div className="text-xs font-semibold text-[var(--text-primary)]">{event.title}</div>
+                        <div className="text-[10px] text-[var(--text-muted)] font-mono">{event.year}</div>
                       </div>
                     </div>
 
                     <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${
-                      isActive ? "transform translate-x-1 text-purple-400" : "text-zinc-600"
+                      isActive ? "transform translate-x-1 text-[var(--primary)]" : "text-[var(--text-muted)]"
                     }`} />
                   </motion.button>
                 );
@@ -495,47 +495,47 @@ export default function AboutSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.3 }}
-                  className="glass p-6 sm:p-8 rounded-2xl border border-zinc-800/80 bg-zinc-950/60 backdrop-blur-xl relative overflow-hidden h-full flex flex-col justify-between"
+                  className="border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8 rounded-2xl relative overflow-hidden h-full flex flex-col justify-between"
                 >
                   {/* Glowing background matrix effect */}
-                  <div className="absolute top-[-10%] right-[-10%] w-48 h-48 rounded-full bg-purple-500/5 blur-3xl pointer-events-none" />
+                  <div className="absolute top-[-10%] right-[-10%] w-48 h-48 rounded-full bg-[var(--primary)]/5 blur-3xl pointer-events-none" />
                   
                   <div className="space-y-6">
                     {/* Header */}
                     <div className="flex justify-between items-start gap-4">
                       <div>
-                        <span className="text-[10px] font-mono tracking-widest text-purple-400 font-semibold bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20">
+                        <span className="text-[10px] font-mono tracking-widest text-[var(--primary)] font-semibold bg-[var(--primary)]/10 px-2.5 py-1 rounded-full border border-[var(--primary)]/20">
                           YEAR {selectedEvent.year}
                         </span>
-                        <h4 className="text-lg font-semibold text-white mt-3 leading-tight">
+                        <h4 className="text-lg font-semibold text-[var(--text-primary)] mt-3 leading-tight">
                           {selectedEvent.title}
                         </h4>
-                        <span className="text-xs text-zinc-400 font-mono block mt-1">
+                        <span className="text-xs text-[var(--text-secondary)] font-mono block mt-1">
                           {selectedEvent.subtitle}
                         </span>
                       </div>
                       
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${selectedEvent.color} flex items-center justify-center text-white shadow-lg`}>
+                      <div className="w-12 h-12 rounded-xl bg-[var(--primary)] flex items-center justify-center text-white shadow-lg">
                         {(() => {
                           const CustomIcon = selectedEvent.icon;
-                          return <CustomIcon className="w-6 h-6" />;
+                          return <CustomIcon className="w-6 h-6 text-white" />;
                         })()}
                       </div>
                     </div>
 
                     {/* Main Description */}
-                    <p className="text-sm text-zinc-300 leading-relaxed">
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                       {selectedEvent.description}
                     </p>
 
                     {/* Rich Chronology Milestones */}
-                    <div className="space-y-3 pt-4 border-t border-zinc-900">
-                      <span className="text-[10px] text-zinc-500 font-mono uppercase tracking-wider block">
+                    <div className="space-y-3 pt-4 border-t border-[var(--border)]">
+                      <span className="text-[10px] text-[var(--text-muted)] font-mono uppercase tracking-wider block">
                         Milestones & Deliverables
                       </span>
                       {selectedEvent.details.map((detail, dIdx) => (
-                        <div key={dIdx} className="flex items-start gap-2.5 text-xs text-zinc-300 leading-relaxed">
-                          <ShieldCheck className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                        <div key={dIdx} className="flex items-start gap-2.5 text-xs text-[var(--text-secondary)] leading-relaxed">
+                          <ShieldCheck className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
                           <span>{detail}</span>
                         </div>
                       ))}
@@ -543,17 +543,17 @@ export default function AboutSection() {
                   </div>
 
                   {/* Tech stack used in this era */}
-                  <div className="mt-8 pt-5 border-t border-zinc-900">
-                    <span className="text-[9px] text-zinc-500 font-mono uppercase tracking-wider block mb-3">
+                  <div className="mt-8 pt-5 border-t border-[var(--border)]">
+                    <span className="text-[9px] text-[var(--text-muted)] font-mono uppercase tracking-wider block mb-3">
                       Core Stack // Focus Area
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {selectedEvent.techTags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-zinc-900 text-zinc-400 border border-zinc-850 flex items-center gap-1 hover:text-white hover:border-zinc-700 transition-colors"
+                          className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-[var(--surface)] text-[var(--text-secondary)] border border-[var(--border)] flex items-center gap-1 hover:text-[var(--text-primary)] hover:border-[var(--primary)] transition-colors"
                         >
-                          <Zap className="w-2.5 h-2.5 text-purple-400" />
+                          <Zap className="w-2.5 h-2.5 text-[var(--primary)]" />
                           {tag}
                         </span>
                       ))}

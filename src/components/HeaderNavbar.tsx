@@ -62,7 +62,7 @@ export default function HeaderNavbar({
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b ${
           isScrolled
-            ? "py-2 bg-zinc-950/75 dark:bg-[#030303]/70 backdrop-blur-xl border-zinc-900/60 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+            ? "py-2 bg-[var(--card)]/90 backdrop-blur-xl border-[var(--border)] shadow-md"
             : "py-3.5 bg-transparent border-transparent"
         }`}
       >
@@ -77,18 +77,18 @@ export default function HeaderNavbar({
             className="flex items-center gap-2.5 group cursor-pointer"
             id="nav-logo-btn"
           >
-            <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white dark:bg-white transition-all duration-300 group-hover:scale-105 group-hover:rotate-3 shadow-md">
-              <div className="w-4 h-4 bg-black rounded-sm transform rotate-45 transition-transform duration-500 group-hover:rotate-90"></div>
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-[var(--card)] border border-[var(--border)] transition-all duration-300 group-hover:scale-105 group-hover:rotate-3 shadow-md">
+              <div className="w-4 h-4 bg-[var(--text-primary)] rounded-sm transform rotate-45 transition-transform duration-500 group-hover:rotate-90"></div>
               {/* Pulsing overlay ring */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-purple-500/20 rounded-lg transition-all" />
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-[var(--primary)]/20 rounded-lg transition-all" />
             </div>
-            <span className="font-sans font-bold text-sm tracking-wide text-zinc-800 dark:text-zinc-100 transition-colors">
-              SATHIYA<span className="text-purple-500 animate-pulse">.</span>K
+            <span className="font-sans font-bold text-sm tracking-wide text-[var(--text-primary)] transition-colors">
+              SATHIYA<span className="text-[var(--primary)] animate-pulse">.</span>K
             </span>
           </button>
 
           {/* 2. Middle: Premium Nav Links with Animated Active Underline */}
-          <nav className="hidden xl:flex items-center gap-1.5 p-1 rounded-full bg-zinc-950/20 dark:bg-zinc-950/40 border border-zinc-900/60 backdrop-blur-sm relative">
+          <nav className="hidden xl:flex items-center gap-1.5 p-1 rounded-full bg-[var(--background-secondary)]/50 border border-[var(--border)] backdrop-blur-sm relative">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -97,15 +97,15 @@ export default function HeaderNavbar({
                   onClick={() => scrollToSection(link.id)}
                   className={`relative px-4 py-1.5 rounded-full text-xs font-mono transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "text-white dark:text-white font-semibold"
-                      : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100"
+                      ? "text-[var(--text-primary)] font-semibold"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                   }`}
                 >
                   {/* Underline or backdrop block following active item */}
                   {isActive && (
                     <motion.div
                       layoutId="activeNavBarUnderline"
-                      className="absolute inset-0 bg-white/10 dark:bg-zinc-800/60 rounded-full border border-zinc-700/30 dark:border-zinc-700/40 shadow-sm"
+                      className="absolute inset-0 bg-[var(--card)] rounded-full border border-[var(--border)] shadow-sm"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -126,7 +126,7 @@ export default function HeaderNavbar({
                 onChatbotToggle={toggleChatbot}
               />
               {/* Floating micro key helper pill */}
-              <div className="hidden lg:flex items-center gap-1 absolute -bottom-5 left-1/2 -translate-x-1/2 text-[8px] font-mono text-zinc-500 pointer-events-none tracking-widest uppercase opacity-70">
+              <div className="hidden lg:flex items-center gap-1 absolute -bottom-5 left-1/2 -translate-x-1/2 text-[8px] font-mono text-[var(--text-muted)] pointer-events-none tracking-widest uppercase opacity-70">
                 <Command className="w-2 h-2" />
                 <span>K to search</span>
               </div>
@@ -136,12 +136,12 @@ export default function HeaderNavbar({
             <a
               href="/resume.pdf"
               download="SATHIYAMOORTHI_K_Resume.pdf"
-              className="flex items-center gap-1 sm:gap-1.5 px-2 py-2 sm:px-3.5 sm:py-1.5 rounded-full border border-purple-500/20 bg-purple-500/5 hover:bg-purple-500/10 hover:border-purple-500/40 transition-all text-xs font-mono text-purple-300 group shadow-sm shrink-0"
+              className="flex items-center gap-1 sm:gap-1.5 px-2 py-2 sm:px-3.5 sm:py-1.5 rounded-full border border-[var(--primary)]/20 bg-[var(--primary)]/5 hover:bg-[var(--primary)]/10 hover:border-[var(--primary)]/40 transition-all text-xs font-mono text-[var(--primary)] group shadow-sm shrink-0"
               title="Download CV"
             >
-              <FileText className="w-3.5 h-3.5 text-purple-400 group-hover:scale-105 transition-transform" />
+              <FileText className="w-3.5 h-3.5 text-[var(--primary)] group-hover:scale-105 transition-transform" />
               <span className="hidden sm:inline">Resume</span>
-              <Download className="w-3 h-3 text-purple-300 opacity-60 group-hover:opacity-100 group-hover:translate-y-0.5 transition-all" />
+              <Download className="w-3 h-3 text-[var(--primary)] opacity-60 group-hover:opacity-100 group-hover:translate-y-0.5 transition-all" />
             </a>
 
             {/* Consolidated Premium Appearance Selector Panel */}
@@ -209,7 +209,7 @@ export default function HeaderNavbar({
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="xl:hidden absolute top-full left-0 w-full overflow-hidden bg-white/90 dark:bg-[#030303]/95 backdrop-blur-2xl border-b border-zinc-200 dark:border-zinc-900 shadow-2xl"
+              className="xl:hidden absolute top-full left-0 w-full overflow-hidden bg-[var(--card)]/90 backdrop-blur-2xl border-b border-[var(--border)] shadow-2xl"
             >
               <div className="px-6 py-8 space-y-4 max-w-lg mx-auto">
                 <div className="border-b border-zinc-200 dark:border-zinc-900 pb-3 flex items-center justify-between">
@@ -237,8 +237,8 @@ export default function HeaderNavbar({
                         }}
                         className={`w-full text-left px-4 py-3.5 rounded-xl text-sm font-sans font-medium transition-all flex items-center justify-between group cursor-pointer ${
                           isActive
-                            ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold border-l-4 border-purple-500"
-                            : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-900/60 hover:text-zinc-900 dark:hover:text-white"
+                            ? "bg-[var(--primary)]/10 text-[var(--primary)] font-bold border-l-4 border-[var(--primary)]"
+                            : "text-[var(--text-secondary)] hover:bg-[var(--background-secondary)]/50 hover:text-[var(--text-primary)]"
                         }`}
                       >
                         <span>{link.label}</span>
@@ -249,11 +249,11 @@ export default function HeaderNavbar({
                 </div>
 
                 {/* Mobile action row: Resume Download & Palette trigger */}
-                <div className="pt-4 border-t border-zinc-200 dark:border-zinc-900 flex flex-col gap-3">
+                <div className="pt-4 border-t border-[var(--border)] flex flex-col gap-3">
                   <a
                     href="/resume.pdf"
                     download="SATHIYAMOORTHI_K_Resume.pdf"
-                    className="w-full flex items-center justify-center gap-2.5 py-3 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-semibold hover:bg-purple-500/15 transition-all text-center"
+                    className="w-full flex items-center justify-center gap-2.5 py-3 rounded-xl bg-[var(--primary)]/10 text-[var(--primary)] text-xs font-semibold hover:bg-[var(--primary)]/15 transition-all text-center"
                   >
                     <Download className="w-4 h-4" />
                     <span>Download Curriculum Vitae (PDF)</span>
