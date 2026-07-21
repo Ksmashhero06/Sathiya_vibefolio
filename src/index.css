@@ -122,10 +122,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #2e1065;
+  --button-text: #f3e8ff;
+  --button-hover: #3b0764;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -216,10 +216,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #18181b;
+  --button-text: #f4f4f5;
+  --button-hover: #27272a;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -306,10 +306,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #0f172a;
+  --button-text: #f8fafc;
+  --button-hover: #1e293b;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -396,10 +396,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #2e1065;
+  --button-text: #f3e8ff;
+  --button-hover: #3b0764;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -486,10 +486,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #4c1d95;
+  --button-text: #f5f3ff;
+  --button-hover: #5b21b6;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -576,10 +576,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #022c22;
+  --button-text: #ecfdf5;
+  --button-hover: #064e3b;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -666,10 +666,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #064e3b;
+  --button-text: #f0fdf4;
+  --button-hover: #0f766e;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -756,10 +756,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #4c0519;
+  --button-text: #fff1f2;
+  --button-hover: #881337;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -846,10 +846,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #881337;
+  --button-text: #fff1f2;
+  --button-hover: #9f1239;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -936,10 +936,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #082f49;
+  --button-text: #f0f9ff;
+  --button-hover: #0c4a6e;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 
@@ -1026,10 +1026,10 @@
   --card-bg: var(--card);
   --surface-bg: var(--surface);
   --border-color: var(--border);
-  --button-bg: var(--primary);
-  --button-text: var(--text-inverse);
-  --button-hover: var(--primary-hover);
-  --button-text-hover: var(--text-inverse);
+  --button-bg: #0c4a6e;
+  --button-text: #f0f9ff;
+  --button-hover: #0369a1;
+  --button-text-hover: #ffffff;
   --shadow-fallback: var(--shadow);
 }
 

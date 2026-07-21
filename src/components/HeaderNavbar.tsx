@@ -20,6 +20,8 @@ import AppearancePanel from "./AppearancePanel";
 
 interface HeaderNavbarProps {
   theme: "dark" | "light";
+  themeMode: "dark" | "light" | "system";
+  setThemeMode: (mode: "dark" | "light" | "system") => void;
   toggleTheme: () => void;
   activeTheme: string;
   setThemeAndPersist: (newTheme: any) => void;
@@ -31,6 +33,8 @@ interface HeaderNavbarProps {
 
 export default function HeaderNavbar({
   theme,
+  themeMode,
+  setThemeMode,
   toggleTheme,
   activeTheme,
   setThemeAndPersist,
@@ -62,11 +66,11 @@ export default function HeaderNavbar({
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b ${
           isScrolled
-            ? "py-2 bg-[var(--card)]/90 backdrop-blur-xl border-[var(--border)] shadow-md"
-            : "py-3.5 bg-transparent border-transparent"
+            ? "py-3.5 bg-[var(--card)]/90 backdrop-blur-xl border-[var(--border)] shadow-md"
+            : "py-5.5 bg-transparent border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* 1. Left Side: Brand Logo */}
           <button
@@ -74,28 +78,28 @@ export default function HeaderNavbar({
               scrollToSection("hero");
               setIsMobileMenuOpen(false);
             }}
-            className="flex items-center gap-2.5 group cursor-pointer"
+            className="flex items-center gap-2 group cursor-pointer"
             id="nav-logo-btn"
           >
-            <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-[var(--card)] border border-[var(--border)] transition-all duration-300 group-hover:scale-105 group-hover:rotate-3 shadow-md">
-              <div className="w-4 h-4 bg-[var(--text-primary)] rounded-sm transform rotate-45 transition-transform duration-500 group-hover:rotate-90"></div>
+            <div className="relative w-7 h-7 rounded-lg overflow-hidden flex items-center justify-center bg-[var(--card)] border border-[var(--border)] transition-all duration-300 group-hover:scale-105 group-hover:rotate-3 shadow-md">
+              <div className="w-3.5 h-3.5 bg-[var(--text-primary)] rounded-sm transform rotate-45 transition-transform duration-500 group-hover:rotate-90"></div>
               {/* Pulsing overlay ring */}
               <div className="absolute inset-0 border-2 border-transparent group-hover:border-[var(--primary)]/20 rounded-lg transition-all" />
             </div>
-            <span className="font-sans font-bold text-sm tracking-wide text-[var(--text-primary)] transition-colors">
+            <span className="font-sans font-bold text-xs tracking-wide text-[var(--text-primary)] transition-colors">
               SATHIYA<span className="text-[var(--primary)] animate-pulse">.</span>K
             </span>
           </button>
 
           {/* 2. Middle: Premium Nav Links with Animated Active Underline */}
-          <nav className="hidden xl:flex items-center gap-1.5 p-1 rounded-full bg-[var(--background-secondary)]/50 border border-[var(--border)] backdrop-blur-sm relative">
+          <nav className="hidden 2xl:flex items-center gap-1 p-0.5 rounded-full bg-[var(--background-secondary)]/50 border border-[var(--border)] backdrop-blur-sm relative">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
-                  className={`relative px-4 py-1.5 rounded-full text-xs font-mono transition-all duration-300 cursor-pointer ${
+                  className={`relative px-3 py-1 rounded-full text-[11px] font-mono transition-all duration-300 cursor-pointer ${
                     isActive
                       ? "text-[var(--text-primary)] font-semibold"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -149,15 +153,15 @@ export default function HeaderNavbar({
               <button
                 id="appearance-panel-trigger"
                 onClick={() => setIsThemeMenuOpen(!isThemeMenuOpen)}
-                className="p-2 hover:bg-zinc-200 dark:hover:bg-zinc-900 rounded-full border border-zinc-200 dark:border-zinc-850 bg-zinc-50 dark:bg-zinc-950/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white transition-all shadow-sm cursor-pointer shrink-0 flex items-center justify-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                className="px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--card)] hover:bg-[var(--surface-elevated)] text-[var(--text-muted)] hover:text-[var(--primary)] transition-all text-xs font-mono group shadow-sm cursor-pointer shrink-0 flex items-center justify-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 title="Select appearance mode and accent color"
                 aria-haspopup="dialog"
                 aria-expanded={isThemeMenuOpen}
               >
                 {theme === "light" ? (
-                  <Sun className="w-4 h-4 text-amber-500" />
+                  <Sun className="w-3.5 h-3.5 text-amber-500 group-hover:rotate-12 transition-transform" />
                 ) : (
-                  <Moon className="w-4 h-4 text-indigo-400" />
+                  <Moon className="w-3.5 h-3.5 text-indigo-400 group-hover:-rotate-12 transition-transform" />
                 )}
                 <span className="hidden md:inline text-[10px] font-mono uppercase tracking-wider font-semibold">
                   Appearance
@@ -168,9 +172,8 @@ export default function HeaderNavbar({
                 {isThemeMenuOpen && (
                   <AppearancePanel
                     theme={theme}
-                    setThemeMode={(mode) => {
-                      if (theme !== mode) toggleTheme();
-                    }}
+                    themeMode={themeMode}
+                    setThemeMode={setThemeMode}
                     activeTheme={activeTheme as any}
                     setThemeAndPersist={setThemeAndPersist}
                     onClose={() => setIsThemeMenuOpen(false)}
@@ -182,7 +185,7 @@ export default function HeaderNavbar({
             {/* Interactive Morphing Hamburger menu */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="xl:hidden p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/80 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white transition-all shadow-sm"
+              className="2xl:hidden p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900/80 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-white transition-all shadow-sm"
               aria-label="Toggle Menu"
             >
               <AnimatePresence mode="wait">
@@ -209,7 +212,7 @@ export default function HeaderNavbar({
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="xl:hidden absolute top-full left-0 w-full overflow-hidden bg-[var(--card)]/90 backdrop-blur-2xl border-b border-[var(--border)] shadow-2xl"
+              className="2xl:hidden absolute top-full left-0 w-full overflow-hidden bg-[var(--card)]/90 backdrop-blur-2xl border-b border-[var(--border)] shadow-2xl"
             >
               <div className="px-6 py-8 space-y-4 max-w-lg mx-auto">
                 <div className="border-b border-zinc-200 dark:border-zinc-900 pb-3 flex items-center justify-between">
@@ -272,7 +275,7 @@ export default function HeaderNavbar({
       </header>
 
       {/* Spacing node to ensure section offsets match the sticky header correctly */}
-      <div className="h-14 w-full" />
+      <div className="h-20 w-full" />
     </>
   );
 }

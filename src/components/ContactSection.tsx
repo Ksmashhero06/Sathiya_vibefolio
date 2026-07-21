@@ -503,21 +503,21 @@ export default function ContactSection() {
                         disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
-                        className="w-full relative overflow-hidden group/btn flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-xs font-semibold tracking-wider bg-[var(--text-primary)] text-[var(--background)] hover:opacity-90 disabled:bg-[var(--surface)] disabled:text-[var(--text-muted)] disabled:border-[var(--border)] transition-all duration-300 cursor-pointer"
+                        className="w-full relative overflow-hidden group/btn flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-xs font-semibold tracking-wider bg-[var(--button-bg)] text-[var(--button-text)] hover:bg-[var(--button-hover)] hover:text-[var(--button-text-hover)] disabled:bg-[var(--surface)] disabled:text-[var(--text-muted)] disabled:border-[var(--border)] transition-all duration-300 cursor-pointer"
                       >
                         {/* Shimmer sliding light effect on hover */}
-                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[var(--background)]/10 to-transparent -translate-x-full group-hover/btn:animate-shimmer pointer-events-none" />
+                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[var(--button-text)]/10 to-transparent -translate-x-full group-hover/btn:animate-shimmer pointer-events-none" />
 
                         {isSubmitting ? (
                           <>
-                            <Loader2 className="w-4 h-4 animate-spin text-[var(--background)]" />
+                            <Loader2 className="w-4 h-4 animate-spin text-[var(--button-text)]" />
                             <span>ENCRYPTING & ROUTING SECURE TRANSMISSION...</span>
                           </>
                         ) : (
                           <>
-                            <Send className="w-3.5 h-3.5 text-[var(--background)]" />
+                            <Send className="w-3.5 h-3.5 text-[var(--button-text)]" />
                             <span>TRANSMIT SECURITY HANDSHAKE</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-[var(--background)] group-hover/btn:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-3.5 h-3.5 text-[var(--button-text)] group-hover/btn:translate-x-1 transition-transform" />
                           </>
                         )}
                       </motion.button>

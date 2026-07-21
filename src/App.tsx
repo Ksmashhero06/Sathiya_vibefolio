@@ -52,20 +52,31 @@ export default function App() {
     }
     return "purple";
   });
-  const [theme, setTheme] = useState<"dark" | "light">(() => {
+  
+  const [themeMode, setThemeMode] = useState<"dark" | "light" | "system">(() => {
     const savedMode = localStorage.getItem("portfolio-theme-mode");
-    if (savedMode && ["dark", "light"].includes(savedMode)) {
+    if (savedMode && ["dark", "light", "system"].includes(savedMode)) {
       return savedMode as any;
     }
-    const legacy = localStorage.getItem("portfolio-theme");
-    if (legacy === "light") {
-      return "light";
-    }
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
+    return "system";
   });
+
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    if (themeMode === "system") {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const handleChange = () => {
+        setTheme(mediaQuery.matches ? "dark" : "light");
+      };
+      handleChange();
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    } else {
+      setTheme(themeMode);
+    }
+  }, [themeMode]);
+
   const [activeSection, setActiveSection] = useState("hero");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -78,11 +89,15 @@ export default function App() {
     localStorage.setItem("portfolio-theme", newTheme);
   };
 
+  const setThemeModeAndPersist = (mode: "dark" | "light" | "system") => {
+    setThemeMode(mode);
+    localStorage.setItem("portfolio-theme-mode", mode);
+  };
+
   // Toggle dark/light theme
   const toggleTheme = () => {
-    const newMode = theme === "dark" ? "light" : "dark";
-    setTheme(newMode);
-    localStorage.setItem("portfolio-theme-mode", newMode);
+    const nextMode = theme === "dark" ? "light" : "dark";
+    setThemeModeAndPersist(nextMode);
   };
 
   useEffect(() => {
@@ -90,6 +105,7 @@ export default function App() {
     document.documentElement.setAttribute("data-theme", combined);
     document.documentElement.setAttribute("data-theme-family", activeTheme);
     document.documentElement.setAttribute("data-theme-mode", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
   }, [activeTheme, theme]);
 
   // Trigger chatbot toggle externally (e.g. from command palette)
@@ -171,6 +187,8 @@ export default function App() {
       {/* Sticky Premium Navbar */}
       <HeaderNavbar
         theme={theme}
+        themeMode={themeMode}
+        setThemeMode={setThemeModeAndPersist}
         toggleTheme={toggleTheme}
         activeTheme={activeTheme}
         setThemeAndPersist={setThemeAndPersist}
@@ -229,7 +247,7 @@ export default function App() {
               <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 max-w-2xl mx-auto w-full pt-1">
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="w-full sm:w-auto bg-[var(--primary)] text-[var(--text-inverse)] px-5 py-2 rounded-xl font-semibold text-xs sm:text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto bg-[var(--button-bg)] text-[var(--button-text)] hover:bg-[var(--button-hover)] hover:text-[var(--button-text-hover)] px-5 py-2 rounded-xl font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   <span>Initiate Consult</span>
                   <ArrowRight className="w-4 h-4" />
@@ -292,9 +310,9 @@ export default function App() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 max-w-4xl w-full">
                 <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">
                   <span className="text-[var(--text-muted)] text-[9px] font-semibold uppercase tracking-wider">Projects Built</span>
-                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-[var(--text-primary)]">8+</div>
+                  <div className="text-xl sm:text-2xl font-bold mt-0.5 text-[var(--text-primary)]">10+</div>
                   <div className="w-full h-1 bg-[var(--border)]/60 rounded-full mt-2 overflow-hidden">
-                    <div className="w-4/5 h-full bg-[var(--primary)] transition-all duration-500 group-hover:opacity-80"></div>
+                    <div className="w-full h-full bg-[var(--primary)] transition-all duration-500 group-hover:opacity-80"></div>
                   </div>
                 </div>
                 <div className="border border-[var(--border)] bg-[var(--card)] glow-card p-3 rounded-xl flex flex-col justify-between text-left group transition-all duration-300 hover:-translate-y-1">

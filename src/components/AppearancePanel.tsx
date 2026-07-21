@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Sun, Moon, Check, X, Sparkles } from "lucide-react";
+import { motion } from "motion/react";
+import { Sun, Moon, Monitor, Check, X, Sparkles } from "lucide-react";
 
 interface AppearancePanelProps {
   theme: "dark" | "light";
-  setThemeMode: (mode: "dark" | "light") => void;
+  themeMode: "dark" | "light" | "system";
+  setThemeMode: (mode: "dark" | "light" | "system") => void;
   activeTheme: "neutral" | "purple" | "emerald" | "crimson" | "sky";
   setThemeAndPersist: (newTheme: "neutral" | "purple" | "emerald" | "crimson" | "sky") => void;
   onClose: () => void;
@@ -46,6 +47,7 @@ const themesMeta = {
 
 export default function AppearancePanel({
   theme,
+  themeMode,
   setThemeMode,
   activeTheme,
   setThemeAndPersist,
@@ -136,163 +138,122 @@ export default function AppearancePanel({
   const renderContent = () => (
     <div className="flex flex-col text-left space-y-5">
       {/* 1. Header Section */}
-      <div className="flex items-start justify-between pb-3.5 border-b border-zinc-200/60 dark:border-zinc-800/60">
+      <div className="flex items-start justify-between pb-3.5 border-b border-[var(--border)]">
         <div>
-          <h3 className="text-sm font-sans font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="text-sm font-sans font-semibold text-[var(--text-primary)]">
             Appearance
           </h3>
-          <p className="text-[11px] font-sans text-zinc-500 dark:text-zinc-400 mt-0.5">
+          <p className="text-[11px] font-sans text-[var(--text-secondary)] mt-0.5">
             Customize your experience
           </p>
         </div>
         <button
           onClick={onClose}
-          className="p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 rounded-full text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+          className="p-1.5 hover:bg-[var(--background-secondary)] rounded-full text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
           aria-label="Close configuration panel"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
-      {/* 2. Appearance Mode Setting Cards */}
+      {/* 2. Appearance Mode Setting Group (Segmented Layout) */}
       <div>
-        <h4 className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 dark:text-zinc-500 uppercase mb-3">
+        <h4 className="text-[10px] font-mono font-bold tracking-wider text-[var(--text-muted)] uppercase mb-2.5">
           Mode
         </h4>
-        <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="Appearance Mode">
-          {/* Light Mode Card */}
+        <div className="flex items-center gap-1 p-1 bg-[var(--background-secondary)]/50 border border-[var(--border)] rounded-xl" role="radiogroup" aria-label="Appearance Mode">
+          {/* Light Mode */}
           <button
             onClick={() => setThemeMode("light")}
             role="radio"
-            aria-checked={theme === "light"}
-            style={{
-              borderColor: theme === "light" ? activeColorCode : undefined,
-              boxShadow: theme === "light" ? `0 0 14px ${activeColorCode}1c` : undefined
-            }}
-            className={`relative flex flex-col items-start p-3.5 rounded-2xl border text-left cursor-pointer transition-all duration-300 outline-none ${
-              theme === "light"
-                ? "bg-zinc-50/80 dark:bg-zinc-900/40 text-zinc-950 font-medium"
-                : "bg-transparent border-zinc-200/60 dark:border-zinc-800/50 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-50/40 dark:hover:bg-zinc-900/30"
-            } focus-visible:ring-2 focus-visible:ring-[var(--primary)]`}
+            aria-checked={themeMode === "light"}
+            title="Light Mode"
+            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3.5 rounded-lg text-[11px] font-medium font-sans transition-all duration-200 cursor-pointer focus:outline-none ${
+              themeMode === "light"
+                ? "bg-[var(--button-bg)] text-[var(--button-text)] shadow-sm border border-[var(--button-bg)]"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-transparent"
+            }`}
           >
-            <div className="flex items-center justify-between w-full mb-2">
-              <Sun className={`w-5 h-5 ${theme === "light" ? "text-amber-500" : "text-zinc-400"}`} />
-              {theme === "light" && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="w-4 h-4 rounded-full flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: activeColorCode }}
-                >
-                  <Check className="w-2.5 h-2.5 text-white stroke-[3px]" />
-                </motion.div>
-              )}
-            </div>
-            <span className="text-xs font-semibold block text-zinc-800 dark:text-zinc-200">Light</span>
-            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 mt-0.5">Bright interface</span>
+            <Sun className={`w-3.5 h-3.5 shrink-0 ${themeMode === "light" ? "text-[var(--button-text)]" : "text-[var(--text-muted)]"}`} />
+            <span>Light</span>
           </button>
 
-          {/* Dark Mode Card */}
+          {/* Dark Mode */}
           <button
             onClick={() => setThemeMode("dark")}
             role="radio"
-            aria-checked={theme === "dark"}
-            style={{
-              borderColor: theme === "dark" ? activeColorCode : undefined,
-              boxShadow: theme === "dark" ? `0 0 14px ${activeColorCode}1c` : undefined
-            }}
-            className={`relative flex flex-col items-start p-3.5 rounded-2xl border text-left cursor-pointer transition-all duration-300 outline-none ${
-              theme === "dark"
-                ? "bg-zinc-50/80 dark:bg-zinc-900/40 text-white font-medium"
-                : "bg-transparent border-zinc-200/60 dark:border-zinc-800/50 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-50/40 dark:hover:bg-zinc-900/30"
-            } focus-visible:ring-2 focus-visible:ring-[var(--primary)]`}
+            aria-checked={themeMode === "dark"}
+            title="Dark Mode"
+            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3.5 rounded-lg text-[11px] font-medium font-sans transition-all duration-200 cursor-pointer focus:outline-none ${
+              themeMode === "dark"
+                ? "bg-[var(--button-bg)] text-[var(--button-text)] shadow-sm border border-[var(--button-bg)]"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-transparent"
+            }`}
           >
-            <div className="flex items-center justify-between w-full mb-2">
-              <Moon className={`w-5 h-5 ${theme === "dark" ? "text-indigo-400" : "text-zinc-400"}`} />
-              {theme === "dark" && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="w-4 h-4 rounded-full flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: activeColorCode }}
-                >
-                  <Check className="w-2.5 h-2.5 text-white stroke-[3px]" />
-                </motion.div>
-              )}
-            </div>
-            <span className="text-xs font-semibold block text-zinc-800 dark:text-zinc-200">Dark</span>
-            <span className="text-[10px] text-zinc-400 dark:text-zinc-500 mt-0.5">Low-light interface</span>
+            <Moon className={`w-3.5 h-3.5 shrink-0 ${themeMode === "dark" ? "text-[var(--button-text)]" : "text-[var(--text-muted)]"}`} />
+            <span>Dark</span>
+          </button>
+
+          {/* System Mode */}
+          <button
+            onClick={() => setThemeMode("system")}
+            role="radio"
+            aria-checked={themeMode === "system"}
+            title="System Preference"
+            className={`flex-1 flex items-center justify-center gap-2 py-2 px-3.5 rounded-lg text-[11px] font-medium font-sans transition-all duration-200 cursor-pointer focus:outline-none ${
+              themeMode === "system"
+                ? "bg-[var(--button-bg)] text-[var(--button-text)] shadow-sm border border-[var(--button-bg)]"
+                : "text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-transparent"
+            }`}
+          >
+            <Monitor className={`w-3.5 h-3.5 shrink-0 ${themeMode === "system" ? "text-[var(--button-text)]" : "text-[var(--text-muted)]"}`} />
+            <span>System</span>
           </button>
         </div>
       </div>
 
-      <div className="border-t border-zinc-200/50 dark:border-zinc-800/50 my-1" />
+      <div className="border-t border-[var(--border)] my-1" />
 
-      {/* 3. Accent Colors Grid */}
+      {/* 3. Accent Colors Palette (Circular Color Scheme swatches) */}
       <div>
-        <h4 className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 dark:text-zinc-500 uppercase mb-3">
+        <h4 className="text-[10px] font-mono font-bold tracking-wider text-[var(--text-muted)] uppercase mb-3">
           Accent Color
         </h4>
-        <div className="grid grid-cols-2 xs:grid-cols-3 gap-2.5" role="radiogroup" aria-label="Accent Color Palette">
+        <div className="flex items-center gap-4 py-1.5 pl-1" role="radiogroup" aria-label="Accent Color Palette">
           {Object.entries(themesMeta).map(([id, item]) => {
             const isSelected = activeTheme === id;
-            const previewColors = theme === "dark" ? item.dark : item.light;
-            
             return (
               <button
                 key={id}
                 onClick={() => setThemeAndPersist(id as any)}
                 role="radio"
                 aria-checked={isSelected}
-                style={{
-                  borderColor: isSelected ? item.color : undefined,
-                  boxShadow: isSelected ? `0 4px 12px ${item.color}15` : undefined
-                }}
-                className={`relative flex flex-col p-2.5 rounded-xl border text-left cursor-pointer transition-all duration-300 outline-none group ${
-                  isSelected
-                    ? "bg-zinc-50/60 dark:bg-zinc-900/30 text-zinc-950 dark:text-white font-semibold"
-                    : "bg-transparent border-zinc-200/60 dark:border-zinc-800/40 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50/40 dark:hover:bg-zinc-900/30 hover:-translate-y-0.5"
-                } focus-visible:ring-2 focus-visible:ring-[var(--primary)]`}
+                title={item.label}
+                className="relative group cursor-pointer focus:outline-none shrink-0"
+                aria-label={`Select ${item.label} accent color`}
               >
-                <div className="flex items-center gap-2 mb-2">
-                  {/* Outer circle with scale transition */}
-                  <div className="relative flex items-center justify-center shrink-0">
-                    <div
-                      className="w-3.5 h-3.5 rounded-full shadow-inner flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        background: id === "neutral"
-                          ? `linear-gradient(135deg, ${previewColors.primary} 0%, #a1a1aa 100%)`
-                          : item.color
-                      }}
-                    >
-                      {isSelected && (
-                        <Check className="w-2 h-2 text-white stroke-[3px]" />
-                      )}
-                    </div>
-                  </div>
-                  <span className="text-[11px] font-sans font-medium">{item.label}</span>
-                </div>
-
-                {/* Mini preview strip represent background / card / primary accent element */}
-                <div 
-                  className="h-4 w-full rounded-md flex overflow-hidden border border-zinc-200/50 dark:border-zinc-800/40 bg-zinc-100 dark:bg-zinc-900 shadow-xs"
+                {/* Colored Circle */}
+                <div
+                  style={{ backgroundColor: item.color }}
+                  className="w-8 h-8 rounded-full shadow-md flex items-center justify-center transition-all duration-300 transform group-hover:scale-110 active:scale-95"
                 >
-                  <div className="w-2/5 h-full transition-colors duration-300" style={{ backgroundColor: previewColors.bg }} />
-                  <div className="w-2/5 h-full border-l border-zinc-200/40 dark:border-zinc-800/40 transition-colors duration-300 relative flex items-center justify-center" style={{ backgroundColor: previewColors.card }}>
-                    {/* Small inner element mimicking an active text line */}
-                    <div className="h-0.5 w-3 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-                  </div>
-                  <div className="w-1/5 h-full flex items-center justify-center transition-colors duration-300" style={{ backgroundColor: previewColors.primary }}>
-                    {/* Visual active dot indicator */}
-                    <div className="w-1 h-1 rounded-full bg-white/70" />
-                  </div>
+                  {/* Inner checkmark icon when selected */}
+                  {isSelected && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    >
+                      <Check className="w-4 h-4 text-white stroke-[3.5px]" />
+                    </motion.div>
+                  )}
                 </div>
 
-                {/* Animated Ring Indicator around Selected Accent Card */}
+                {/* Animated Ring Indicator around Selected Accent Circle */}
                 {isSelected && (
                   <motion.div
-                    layoutId="activeAccentRing"
-                    className="absolute inset-[-1.5px] rounded-xl border-1.5 pointer-events-none"
+                    layoutId="activeCircleRing"
+                    className="absolute inset-[-4.5px] rounded-full border-2 pointer-events-none"
                     style={{ borderColor: item.color }}
                     transition={{ type: "spring", stiffness: 350, damping: 25 }}
                   />
@@ -367,8 +328,7 @@ export default function AppearancePanel({
 
                 <button
                   disabled
-                  style={{ backgroundColor: activeColorCode }}
-                  className="text-[9px] text-white font-medium px-2.5 py-1 rounded-lg transition-transform scale-95 shadow-sm"
+                  className="text-[9px] bg-[var(--button-bg)] text-[var(--button-text)] font-medium px-2.5 py-1 rounded-lg transition-transform scale-95 shadow-sm"
                 >
                   Action
                 </button>
@@ -398,10 +358,10 @@ export default function AppearancePanel({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="w-full bg-[var(--card)] border-t sm:border border-zinc-200/80 dark:border-zinc-900 p-6 shadow-2xl rounded-t-[24px] sm:rounded-[24px] max-w-[420px] sm:mx-4 overflow-hidden relative"
+            className="w-full bg-[var(--card)] border-t sm:border border-[var(--border)] p-6 shadow-2xl rounded-t-[24px] sm:rounded-[24px] max-w-[420px] sm:mx-4 overflow-hidden relative"
           >
             {/* Grabber indicator for Mobile bottom sheet */}
-            <div className="w-12 h-1 bg-zinc-300 dark:bg-zinc-800 rounded-full mx-auto mb-5 sm:hidden" />
+            <div className="w-12 h-1 bg-[var(--border)] rounded-full mx-auto mb-5 sm:hidden" />
             {renderContent()}
           </motion.div>
         </div>
@@ -415,7 +375,7 @@ export default function AppearancePanel({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 12 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute right-0 mt-3 w-[400px] rounded-[24px] bg-[var(--card)] border border-zinc-200/80 dark:border-zinc-900 shadow-2xl p-5 z-50 backdrop-blur-xl"
+          className="absolute right-0 mt-3 w-[400px] rounded-[24px] bg-[var(--card)] border border-[var(--border)] shadow-2xl p-5 z-50 backdrop-blur-xl"
         >
           {renderContent()}
         </motion.div>

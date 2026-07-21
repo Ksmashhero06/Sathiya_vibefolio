@@ -107,7 +107,7 @@ export default function ExperienceSection() {
                     } pl-12 md:pl-0`}
                   >
                     {/* Interactive Glass Card with Elevation & Glow */}
-                    <div className="relative group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]/80 hover:border-[var(--primary)]/50 hover:bg-[var(--card)] hover:shadow-lg transition-all duration-300">
+                    <div className="relative group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)]/80 hover:border-[var(--primary)]/50 hover:bg-[var(--card)] hover:shadow-lg transition-all duration-300 p-6 sm:p-8">
                       
                       {/* Interactive Top Laser Light Strip */}
                       <div className="absolute top-0 left-0 right-0 h-[2px] bg-[var(--primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

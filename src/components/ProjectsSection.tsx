@@ -98,7 +98,7 @@ export default function ProjectsSection() {
                 onClick={() => setActiveCategory(tab.id)}
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide transition-all border cursor-pointer ${
                   isSelected
-                    ? "bg-[var(--primary)] border-[var(--primary)] text-[var(--text-inverse)] font-semibold shadow-lg"
+                    ? "bg-[var(--button-bg)] border-[var(--button-bg)] text-[var(--button-text)] font-semibold shadow-lg"
                     : "bg-[var(--card)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)] hover:border-[var(--primary)]/50"
                 }`}
               >
@@ -122,8 +122,17 @@ export default function ProjectsSection() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--card)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-[var(--primary)]/30 hover:bg-[var(--card-hover)] glow-card"
+                whileHover={{
+                  y: -6,
+                  scale: 1.015,
+                }}
+                transition={{
+                  layout: { type: "spring", stiffness: 300, damping: 30 },
+                  opacity: { duration: 0.25 },
+                  scale: { type: "spring", stiffness: 400, damping: 25 },
+                  y: { type: "spring", stiffness: 400, damping: 25 },
+                }}
+                className="group relative flex flex-col justify-between rounded-2xl border border-[var(--border)] bg-[var(--card)] overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65)] hover:border-[var(--primary)]/30 hover:bg-[var(--card-hover)] glow-card transition-colors duration-300"
               >
                 {/* Visual Glow Layer behind image */}
                 <div className="absolute -top-[10%] -left-[10%] w-[120%] h-[120%] bg-gradient-to-tr from-[var(--primary)]/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

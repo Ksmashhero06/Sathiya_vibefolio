@@ -97,7 +97,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
     year: "2025",
     title: "Internships & Leadership",
     subtitle: "GAO Tek Development & Team Coordination",
-    description: "Completed a Web Development internship at GAO Tek Inc., later taking on an Assistant Squad Leader role. Gained experience in WordPress development, team coordination, mentoring.",
+    description: "Completed a Web Development internship at GAO Tek Inc., later taking on an Assistant Squad Leader role. Gained experience in WordPress development, team coordination, mentoring interns, and project execution. Also completed a Game Development internship, expanding software development experience across domains.",
     details: [
       "Led international squad developer interns, reviewing merges and tasks.",
       "Built and optimized company-wide WordPress platforms and plugins.",
@@ -112,7 +112,7 @@ const TIMELINE_EVENTS: TimelineEvent[] = [
     year: "2026",
     title: "Current Goals",
     subtitle: "Strengthening Code & Deploying Solutions",
-    description: "Seeking internship opportunities in Software Development, Artificial Intelligence, and Data Analytics. While I am still strengthening my programming skills, I have gained hands-on experience.",
+    description: "Seeking internship opportunities in Software Development, Artificial Intelligence, and Data Analytics. While I am still strengthening my programming skills, I have gained hands-on experience by building real-world projects using modern development tools, AI-assisted workflows, and industry technologies. My current focus is on improving my coding proficiency while delivering practical, scalable solutions.",
     details: [
       "Consolidating advanced full-stack programming and script models.",
       "Active in seeking next-level Software or Data Analytics roles.",
@@ -181,7 +181,7 @@ export default function AboutSection() {
   const selectedEvent = TIMELINE_EVENTS.find((e) => e.id === selectedTimelineId) || TIMELINE_EVENTS[TIMELINE_EVENTS.length - 1];
   
   // Dynamic image resolution chain with automatic format checking
-  const [portraitSrc, setPortraitSrc] = useState<string>("https://raw.githubusercontent.com/Ksmashhero06/Sathiya_vibefolio/main/developer_portrait.jpg");
+  const [portraitSrc, setPortraitSrc] = useState<string>("/developer_portrait.jpg");
 
   return (
     <section id="about" className="py-16 sm:py-20 md:py-24 border-b border-[var(--border)] relative scroll-mt-20 overflow-hidden">
@@ -226,7 +226,13 @@ export default function AboutSection() {
                   <img
                     src={portraitSrc}
                     onError={() => {
-                      if (portraitSrc === "https://raw.githubusercontent.com/Ksmashhero06/Sathiya_vibefolio/main/developer_portrait.jpg") {
+                      if (portraitSrc === "/developer_portrait.jpg") {
+                        setPortraitSrc("/developer_portrait.png");
+                      } else if (portraitSrc === "/developer_portrait.png") {
+                        setPortraitSrc("/developer_portrait.jpeg");
+                      } else if (portraitSrc === "/developer_portrait.jpeg") {
+                        setPortraitSrc("/developer_portrait.webp");
+                      } else if (portraitSrc !== "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600&h=600") {
                         setPortraitSrc("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600&h=600");
                       }
                     }}
@@ -236,7 +242,7 @@ export default function AboutSection() {
                   />
 
                   {/* Absolute active overlays */}
-                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[var(--card)]/80 backdrop-blur-md border border-[var(--border)] px-3 py-1 rounded-full text-[10px] font-medium">
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-[var(--card)]/80 backdrop-blur-md border border-[var(--border)] px-3 py-1 rounded-full text-[10px] font-mono font-medium text-[var(--text-secondary)]">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                     <span>SYSTEM CORE ONLINE</span>
                   </div>
@@ -265,11 +271,11 @@ export default function AboutSection() {
             </div>
             
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              I am an Information Technology graduate with a strong foundation in modern web architectures, game design workflows, and smart integrations. Over my training and remote collaboration, I have developed expertise in building scalable systems and leading teams.
+              I am an Information Technology graduate with a strong foundation in modern web architectures, game design workflows, and smart integrations. Over my training and remote collaborations, I have focused on writing highly optimized code, designing fluid responsive user interfaces, and organizing robust backend databases using Python, Flask, and Unreal Engine.
             </p>
 
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              My passion lies in continuous learning and applying analytical problem-solving skills to complex system challenges. From managing distributed intern teams as a Web Squad Lead to contributing to cutting-edge AI solutions, I bring dedication and innovation to every project.
+              My passion lies in continuous learning and applying analytical problem-solving skills to complex system challenges. From managing distributed intern teams as a Web Squad Lead to competing in national hackathons and math competitions, I am dedicated to producing high-quality deliverables that drive real-world impact.
             </p>
 
             {/* Core Competency Tags - High contrast accent backgrounds with always white text */}
@@ -545,7 +551,7 @@ export default function AboutSection() {
                       {selectedEvent.techTags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-[var(--surface)] text-[var(--text-secondary)] border border-[var(--border)] flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors"
+                          className="text-[10px] font-mono px-2.5 py-1 rounded-md bg-[var(--surface)] text-[var(--text-secondary)] border border-[var(--border)] flex items-center gap-1 hover:text-[var(--text-primary)] hover:border-[var(--primary)] transition-colors"
                         >
                           <Zap className="w-2.5 h-2.5 text-[var(--primary)]" />
                           {tag}

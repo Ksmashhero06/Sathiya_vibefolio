@@ -146,7 +146,7 @@ export default function SkillsSection() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-medium tracking-wide transition-all border cursor-pointer ${
                   isSelected
-                    ? "bg-[var(--primary)] border-[var(--primary)] text-[var(--text-inverse)] font-semibold shadow-lg scale-105"
+                    ? "bg-[var(--button-bg)] border-[var(--button-bg)] text-[var(--button-text)] font-semibold shadow-lg scale-105"
                     : "bg-[var(--card)] text-[var(--text-secondary)] border-[var(--border)] hover:text-[var(--text-primary)] hover:border-[var(--primary)]/50"
                 }`}
               >
@@ -200,23 +200,6 @@ export default function SkillsSection() {
                     <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-widest block mt-1 mb-1">
                       {skill.category}
                     </span>
-
-                    {/* Progress Bar if experience contains percentage */}
-                    {(() => {
-                      const match = skill.experience.match(/(\d+)%/);
-                      if (match) {
-                        const pct = match[1];
-                        return (
-                          <div className="mt-2.5 w-full bg-[var(--background-secondary)] rounded-full h-1.5 overflow-hidden border border-[var(--border)]">
-                            <div 
-                              className="bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] h-full rounded-full" 
-                              style={{ width: `${pct}%` }}
-                            />
-                          </div>
-                        );
-                      }
-                      return null;
-                    })()}
                   </div>
 
                   {/* Footer: Projects Used pill grid */}

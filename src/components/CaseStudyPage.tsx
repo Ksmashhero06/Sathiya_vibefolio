@@ -39,7 +39,17 @@ const MOCK_SCREENSHOTS: Record<string, { label: string; element: React.ReactNode
     {
       label: "Blockchain Registry Console",
       element: (
-        <div className="w-full h-full bg-[#0d0e12] border border-zinc-800 rounded-xl p-4 font-mono text-[10px] text-zinc-400 space-y-3 relative overflow-hidden group">
+        <div
+          className="w-full h-full bg-[#0d0e12] border border-zinc-800 rounded-xl p-4 font-mono text-[10px] text-zinc-400 space-y-3 relative overflow-hidden group"
+          style={{
+            '--text-primary': '#ffffff',
+            '--text-secondary': '#d1d5db',
+            '--text-muted': '#9ca3af',
+            '--card': '#0d0e12',
+            '--border': 'rgba(255, 255, 255, 0.1)',
+            '--surface': '#060608',
+          } as React.CSSProperties}
+        >
           <div className="absolute top-2 right-2 flex gap-1">
             <span className="w-2 h-2 rounded-full bg-red-500" />
             <span className="w-2 h-2 rounded-full bg-yellow-500" />
@@ -66,7 +76,17 @@ const MOCK_SCREENSHOTS: Record<string, { label: string; element: React.ReactNode
     {
       label: "MetaMask Transaction Log",
       element: (
-        <div className="w-full h-full bg-[#060608] border border-zinc-850 rounded-xl p-4 font-mono text-[9px] text-emerald-400 space-y-2 relative overflow-hidden">
+        <div
+          className="w-full h-full bg-[#060608] border border-zinc-850 rounded-xl p-4 font-mono text-[9px] text-emerald-400 space-y-2 relative overflow-hidden"
+          style={{
+            '--text-primary': '#34d399',
+            '--text-secondary': '#10b981',
+            '--text-muted': '#047857',
+            '--card': '#060608',
+            '--border': 'rgba(255, 255, 255, 0.08)',
+            '--surface': '#022c22',
+          } as React.CSSProperties}
+        >
           <div className="text-zinc-500 border-b border-zinc-850 pb-1.5 uppercase tracking-wider flex items-center gap-1">
             <span>[ LEDGER ACTIVITY ]</span>
           </div>
@@ -83,7 +103,17 @@ const MOCK_SCREENSHOTS: Record<string, { label: string; element: React.ReactNode
     {
       label: "YOLOv8 Real-time Inference",
       element: (
-        <div className="w-full h-full bg-[#0a0c10] border border-zinc-850 rounded-xl p-4 flex flex-col justify-between font-mono text-[10px] text-zinc-400 relative">
+        <div
+          className="w-full h-full bg-[#0a0c10] border border-zinc-850 rounded-xl p-4 flex flex-col justify-between font-mono text-[10px] text-zinc-400 relative"
+          style={{
+            '--text-primary': '#ffffff',
+            '--text-secondary': '#d1d5db',
+            '--text-muted': '#9ca3af',
+            '--card': '#0a0c10',
+            '--border': 'rgba(255, 255, 255, 0.1)',
+            '--surface': '#08080a',
+          } as React.CSSProperties}
+        >
           <div className="text-zinc-500 border-b border-zinc-850 pb-2 flex items-center justify-between">
             <span>YOLOv8 CV RECOGNITION</span>
             <span className="text-blue-400 font-bold">INT8 QUANT</span>
@@ -112,7 +142,17 @@ const MOCK_SCREENSHOTS: Record<string, { label: string; element: React.ReactNode
     {
       label: "Edge Vision Queue",
       element: (
-        <div className="w-full h-full bg-[#08080a] border border-zinc-850 rounded-xl p-4 font-mono text-[9px] text-zinc-300 space-y-2">
+        <div
+          className="w-full h-full bg-[#08080a] border border-zinc-850 rounded-xl p-4 font-mono text-[9px] text-zinc-300 space-y-2"
+          style={{
+            '--text-primary': '#ffffff',
+            '--text-secondary': '#d1d5db',
+            '--text-muted': '#9ca3af',
+            '--card': '#08080a',
+            '--border': 'rgba(255, 255, 255, 0.1)',
+            '--surface': '#050508',
+          } as React.CSSProperties}
+        >
           <div className="text-zinc-500 uppercase pb-1.5 border-b border-zinc-900">Flutter Mobile Frame Buffer</div>
           <div className="p-2 bg-zinc-900/40 border border-zinc-850 rounded">
             <p className="text-blue-400 font-semibold">[Frame ID: 8521] Processing</p>
@@ -130,7 +170,17 @@ const MOCK_SCREENSHOTS: Record<string, { label: string; element: React.ReactNode
     {
       label: "LangChain FAISS RAG Pipeline",
       element: (
-        <div className="w-full h-full bg-[#0a0a0f] border border-zinc-800 rounded-xl p-4 flex flex-col justify-between font-sans text-xs relative overflow-hidden">
+        <div
+          className="w-full h-full bg-[#0a0a0f] border border-zinc-800 rounded-xl p-4 flex flex-col justify-between font-sans text-xs relative overflow-hidden"
+          style={{
+            '--text-primary': '#ffffff',
+            '--text-secondary': '#d1d5db',
+            '--text-muted': '#9ca3af',
+            '--card': '#0a0a0f',
+            '--border': 'rgba(255, 255, 255, 0.1)',
+            '--surface': '#050508',
+          } as React.CSSProperties}
+        >
           <div className="text-zinc-500 font-mono text-[9px] uppercase border-b border-zinc-900 pb-1.5">RAG CITATION MATCH (GEMINI API)</div>
           <div className="my-auto py-2 flex flex-col items-center justify-center space-y-2">
             <div className="p-3 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-xl w-full text-center">
@@ -149,7 +199,17 @@ const MOCK_SCREENSHOTS: Record<string, { label: string; element: React.ReactNode
     {
       label: "Google Gemini Stream Tokenizer",
       element: (
-        <div className="w-full h-full bg-[#050508] border border-zinc-850 rounded-xl p-4 font-mono text-[9px] text-zinc-400 space-y-2">
+        <div
+          className="w-full h-full bg-[#050508] border border-zinc-850 rounded-xl p-4 font-mono text-[9px] text-zinc-400 space-y-2"
+          style={{
+            '--text-primary': '#ffffff',
+            '--text-secondary': '#d1d5db',
+            '--text-muted': '#9ca3af',
+            '--card': '#050508',
+            '--border': 'rgba(255, 255, 255, 0.08)',
+            '--surface': '#030303',
+          } as React.CSSProperties}
+        >
           <div className="text-zinc-500 pb-1.5 border-b border-zinc-900">GEMINI_1.5_FLASH_STREAM</div>
           <div className="flex gap-2 text-[8px] text-zinc-500">
             <span>[09:12:15.302]</span>
@@ -369,7 +429,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
   const relatedProjects = PROJECTS_DATA.filter((p) => p.title !== project.title).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[#030303] text-zinc-100 font-sans relative overflow-x-hidden selection:bg-purple-500/30 selection:text-white">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--text-primary)] font-sans relative overflow-x-hidden selection:bg-purple-500/30 selection:text-white">
       
       {/* Background Gradients */}
       <div className="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-purple-900/10 via-blue-900/5 to-transparent pointer-events-none" />
@@ -377,12 +437,12 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
       <div className="absolute bottom-[20%] left-[5%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none animate-pulse [animation-duration:10s]" />
 
       {/* Floating Header Actions Bar */}
-      <nav className="sticky top-0 z-40 w-full border-b border-zinc-900/40 bg-[#030303]/80 backdrop-blur-md">
+      <nav className="sticky top-0 z-40 w-full border-b border-[var(--border)]/40 bg-[var(--background)]/80 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           
           <button
             onClick={onClose}
-            className="flex items-center gap-2 text-xs font-semibold tracking-wide text-zinc-400 hover:text-white transition-all group cursor-pointer"
+            className="flex items-center gap-2 text-xs font-semibold tracking-wide text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>BACK TO PORTFOLIO</span>
@@ -394,7 +454,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 rounded-xl bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-400 hover:text-white transition-all cursor-pointer"
+                className="p-2 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
                 title="Source Code"
               >
                 <Github className="w-4 h-4" />
@@ -405,7 +465,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-xs text-black transition-all cursor-pointer font-semibold"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-xs text-[var(--text-inverse)] transition-all cursor-pointer font-semibold"
               >
                 <span>Launch App</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -413,7 +473,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
             )}
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-400 hover:text-white transition-all cursor-pointer ml-1"
+              className="p-2 rounded-xl bg-[var(--surface)] hover:bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer ml-1"
               title="Close Case Study"
             >
               <X className="w-4.5 h-4.5" />
@@ -424,39 +484,39 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
       </nav>
 
       {/* Hero Banner Section */}
-      <section className="relative pt-12 pb-20 border-b border-zinc-900/40">
+      <section className="relative pt-12 pb-20 border-b border-[var(--border)]/40">
         <div className="max-w-5xl mx-auto px-6">
           
           {/* Breadcrumb / Title Category */}
           <div className="flex items-center gap-2.5 mb-5">
-            <span className="text-[10px] font-mono text-purple-400 tracking-widest uppercase bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/15">
+            <span className="text-[10px] font-mono text-[var(--primary)] tracking-widest uppercase bg-[var(--primary)]/10 px-3 py-1 rounded-full border border-[var(--primary)]/15">
               Case Study
             </span>
-            <span className="text-zinc-600 font-mono text-[10px]">&bull;</span>
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">
+            <span className="text-[var(--text-muted)] font-mono text-[10px]">&bull;</span>
+            <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider">
               {project.status}
             </span>
           </div>
 
           {/* Main Title */}
-          <h1 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-white max-w-4xl leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[var(--text-primary)] max-w-4xl leading-tight">
             Inside <span className="gradient-text">{project.title}</span>
           </h1>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-3xl mt-4 leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-sm sm:text-base max-w-3xl mt-4 leading-relaxed">
             {details.overview}
           </p>
 
           {/* Key Quick Metrics Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-zinc-900/40">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-[var(--border)]/40">
             {details.results.map((r, index) => (
-              <div key={index} className="p-5 rounded-2xl bg-zinc-950/40 border border-zinc-900/80">
-                <span className="text-zinc-500 text-[10px] font-semibold uppercase tracking-wider block">
+              <div key={index} className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)]">
+                <span className="text-[var(--text-muted)] text-[10px] font-semibold uppercase tracking-wider block">
                   {r.label}
                 </span>
-                <div className="text-2xl font-bold mt-2 text-white tracking-tight">
+                <div className="text-2xl font-bold mt-2 text-[var(--text-primary)] tracking-tight">
                   {r.value}
                 </div>
-                <span className="text-[10px] text-zinc-400 mt-1 block leading-relaxed">
+                <span className="text-[10px] text-[var(--text-secondary)] mt-1 block leading-relaxed">
                   {r.desc}
                 </span>
               </div>
@@ -473,7 +533,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
           {/* Left Navigation Anchor List (Desktop Sticky) */}
           <div className="lg:col-span-3">
             <div className="sticky top-24 flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible pb-3 lg:pb-0 gap-2 lg:gap-0 lg:space-y-1 scrollbar-none">
-              <span className="hidden lg:block text-[9px] font-mono text-zinc-600 uppercase tracking-widest pl-3 mb-3 shrink-0">
+              <span className="hidden lg:block text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-widest pl-3 mb-3 shrink-0">
                 CASE STUDY SECTIONS
               </span>
               {[
@@ -491,11 +551,11 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                     onClick={() => setActiveTab(tab.id as any)}
                     className={`w-auto lg:w-full shrink-0 text-left flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl text-xs font-medium transition-all border cursor-pointer ${
                       isSelected
-                        ? "bg-zinc-900 border-zinc-800 text-white font-semibold shadow"
-                        : "border-transparent text-zinc-400 hover:text-white hover:bg-zinc-900/40"
+                        ? "bg-[var(--surface)] border-[var(--border)] text-[var(--text-primary)] font-semibold shadow"
+                        : "border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface)]/40"
                     }`}
                   >
-                    <IconComp className={`w-3.5 h-3.5 ${isSelected ? "text-purple-400" : "text-zinc-500"}`} />
+                    <IconComp className={`w-3.5 h-3.5 ${isSelected ? "text-[var(--primary)]" : "text-[var(--text-muted)]"}`} />
                     <span>{tab.label}</span>
                   </button>
                 );
@@ -528,7 +588,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                           The Problem Statement
                         </span>
                       </div>
-                      <p className="text-sm text-zinc-300 leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                         {details.problem}
                       </p>
                     </div>
@@ -541,15 +601,15 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                           The Solution Strategy
                         </span>
                       </div>
-                      <p className="text-sm text-zinc-300 leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                         {details.solution}
                       </p>
                     </div>
 
                     {/* Project Core Features Section */}
                     <div className="space-y-6 pt-4">
-                      <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <Cpu className="w-4.5 h-4.5 text-purple-400" />
+                      <h3 className="text-lg font-bold text-[var(--text-primary)] flex items-center gap-2">
+                        <Cpu className="w-4.5 h-4.5 text-[var(--primary)]" />
                         <span>Key Interactive Features</span>
                       </h3>
 
@@ -557,12 +617,12 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                         {details.features.map((f, idx) => {
                           const IconComp = f.icon || Layers;
                           return (
-                            <div key={idx} className="p-5 rounded-2xl bg-zinc-950/40 border border-zinc-900/80 space-y-2 group hover:border-zinc-800 transition-colors">
-                              <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center border border-zinc-850">
-                                <IconComp className="w-4 h-4 text-purple-400" />
+                            <div key={idx} className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-2 group hover:border-[var(--border-hover)] transition-colors">
+                              <div className="w-8 h-8 rounded-lg bg-[var(--surface)] flex items-center justify-center border border-[var(--border)]">
+                                <IconComp className="w-4 h-4 text-[var(--primary)]" />
                               </div>
-                              <h4 className="text-xs font-semibold text-zinc-200 mt-1">{f.title}</h4>
-                              <p className="text-[11px] text-zinc-400 leading-relaxed">{f.desc}</p>
+                              <h4 className="text-xs font-semibold text-[var(--text-primary)] mt-1">{f.title}</h4>
+                              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">{f.desc}</p>
                             </div>
                           );
                         })}
@@ -572,15 +632,15 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                     {/* Screenshots Mock Sections */}
                     {MOCK_SCREENSHOTS[project.title] && (
                       <div className="space-y-6 pt-4">
-                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                          <Monitor className="w-4.5 h-4.5 text-purple-400" />
+                        <h3 className="text-lg font-bold text-[var(--text-primary)] flex items-center gap-2">
+                          <Monitor className="w-4.5 h-4.5 text-[var(--primary)]" />
                           <span>Interactive Interface Wireframes</span>
                         </h3>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           {MOCK_SCREENSHOTS[project.title].map((scr, sIdx) => (
                             <div key={sIdx} className="space-y-2.5 text-left">
-                              <span className="text-[10px] font-mono text-zinc-500 uppercase">
+                              <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
                                 // {scr.label}
                               </span>
                               <div className="aspect-video w-full">
@@ -600,20 +660,20 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                   <div className="space-y-10">
                     
                     <div className="space-y-3 text-left">
-                      <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono text-[var(--primary)] uppercase tracking-widest block">
                         // TECHNICAL TOPOLOGY DESIGN
                       </span>
-                      <p className="text-sm text-zinc-300 leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                         {details.architectureDescription}
                       </p>
                     </div>
 
                     {/* Interactive Animated SVG Topology Flowchart Diagram */}
-                    <div className="p-6 rounded-2xl border border-zinc-900/80 bg-zinc-950/40 relative overflow-hidden flex flex-col items-center">
-                      <span className="absolute top-3 left-4 text-[9px] font-mono text-zinc-600">
+                    <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] relative overflow-hidden flex flex-col items-center">
+                      <span className="absolute top-3 left-4 text-[9px] font-mono text-[var(--text-muted)]">
                         SYSTEM_FLOW_TOPOLOGY.SVG
                       </span>
-                      <div className="absolute top-3 right-4 flex items-center gap-1.5 font-mono text-[8px] text-zinc-500">
+                      <div className="absolute top-3 right-4 flex items-center gap-1.5 font-mono text-[8px] text-[var(--text-muted)]">
                         <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping" />
                         <span>Interactive Node Map</span>
                       </div>
@@ -622,12 +682,12 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                       <svg viewBox="0 0 800 240" className="w-full h-auto mt-6 max-w-2xl select-none">
                         <defs>
                           <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#c084fc" stopOpacity="0.4" />
-                            <stop offset="100%" stopColor="#6366f1" stopOpacity="0.1" />
+                            <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.4" />
+                            <stop offset="100%" stopColor="var(--primary)" stopOpacity="0.1" />
                           </linearGradient>
                           <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="#c084fc" />
-                            <stop offset="100%" stopColor="#3b82f6" />
+                            <stop offset="0%" stopColor="var(--primary)" />
+                            <stop offset="100%" stopColor="var(--primary)" />
                           </linearGradient>
                           <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                             <feGaussianBlur stdDeviation="4" result="blur" />
@@ -669,26 +729,26 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
 
                         {/* Node 1: Client Layer */}
                         <g transform="translate(40, 70)">
-                          <rect width="100" height="100" rx="16" fill="#09090b" stroke="#3f3f46" strokeWidth="1.5" />
-                          <circle cx="50" cy="40" r="16" fill="url(#purpleGrad)" stroke="#c084fc" strokeWidth="1" />
-                          <text x="50" y="44" fill="#c084fc" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">UI</text>
-                          <text x="50" y="80" fill="#a1a1aa" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Client Stage</text>
+                          <rect width="100" height="100" rx="16" fill="var(--surface)" stroke="var(--border)" strokeWidth="1.5" />
+                          <circle cx="50" cy="40" r="16" fill="url(#purpleGrad)" stroke="var(--primary)" strokeWidth="1" />
+                          <text x="50" y="44" fill="var(--primary)" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">UI</text>
+                          <text x="50" y="80" fill="var(--text-secondary)" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Client Stage</text>
                         </g>
 
                         {/* Node 2: Core Processing Backplane */}
                         <g transform="translate(300, 70)">
-                          <rect width="100" height="100" rx="16" fill="#09090b" stroke="#3f3f46" strokeWidth="1.5" />
-                          <circle cx="50" cy="40" r="16" fill="url(#purpleGrad)" stroke="#3b82f6" strokeWidth="1" />
-                          <text x="50" y="44" fill="#3b82f6" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">API</text>
-                          <text x="50" y="80" fill="#a1a1aa" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Async Core</text>
+                          <rect width="100" height="100" rx="16" fill="var(--surface)" stroke="var(--border)" strokeWidth="1.5" />
+                          <circle cx="50" cy="40" r="16" fill="url(#purpleGrad)" stroke="var(--primary)" strokeWidth="1" />
+                          <text x="50" y="44" fill="var(--primary)" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">API</text>
+                          <text x="50" y="80" fill="var(--text-secondary)" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Async Core</text>
                         </g>
 
                         {/* Node 3: Isolated DB/Sandbox worker */}
                         <g transform="translate(560, 70)">
-                          <rect width="110" height="100" rx="16" fill="#09090b" stroke="#3f3f46" strokeWidth="1.5" />
-                          <circle cx="55" cy="40" r="16" fill="url(#purpleGrad)" stroke="#10b981" strokeWidth="1" />
-                          <text x="55" y="44" fill="#10b981" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">DB</text>
-                          <text x="55" y="80" fill="#a1a1aa" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Isolated Data</text>
+                          <rect width="110" height="100" rx="16" fill="var(--surface)" stroke="var(--border)" strokeWidth="1.5" />
+                          <circle cx="55" cy="40" r="16" fill="url(#purpleGrad)" stroke="var(--primary)" strokeWidth="1" />
+                          <text x="55" y="44" fill="var(--primary)" fontSize="10" fontFamily="monospace" textAnchor="middle" fontWeight="bold">DB</text>
+                          <text x="55" y="80" fill="var(--text-secondary)" fontSize="9" fontFamily="sans-serif" textAnchor="middle">Isolated Data</text>
                         </g>
 
                       </svg>
@@ -696,7 +756,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
 
                     {/* Nodes Descriptions Grid */}
                     <div className="space-y-4">
-                      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-widest block">
                         // MICROSERVICE SYSTEM DEPLOYMENTS
                       </span>
 
@@ -704,17 +764,17 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                         {details.architectureNodes.map((n, idx) => (
                           <div
                             key={idx}
-                            className="p-5 rounded-2xl bg-zinc-950/40 border border-zinc-900/80 flex gap-4 items-start"
+                            className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] flex gap-4 items-start"
                           >
-                            <div className="w-2.5 h-2.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
+                            <div className="w-2.5 h-2.5 rounded-full bg-[var(--primary)] mt-1.5 shrink-0" />
                             <div className="space-y-1">
                               <div className="flex items-center gap-2">
-                                <h4 className="text-xs font-bold text-white">{n.name}</h4>
-                                <span className="text-[8px] font-mono text-zinc-500 bg-zinc-900 border border-zinc-850 px-1.5 py-0.5 rounded">
+                                <h4 className="text-xs font-bold text-[var(--text-primary)]">{n.name}</h4>
+                                <span className="text-[8px] font-mono text-[var(--text-muted)] bg-[var(--surface)] border border-[var(--border)] px-1.5 py-0.5 rounded">
                                   {n.type}
                                 </span>
                               </div>
-                              <p className="text-[11px] text-zinc-400 leading-relaxed">
+                              <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
                                 {n.desc}
                               </p>
                             </div>
@@ -727,26 +787,26 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                     {project.caseStudy?.codeSnippet && (
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">
+                          <span className="text-[9px] font-mono text-[var(--text-muted)] uppercase tracking-widest">
                             // CORE INTEGRATION ENDPOINT
                           </span>
-                          <span className="text-[10px] font-mono text-purple-400 bg-purple-500/10 px-2.5 py-0.5 rounded border border-purple-500/20">
+                          <span className="text-[10px] font-mono text-[var(--primary)] bg-[var(--primary)]/10 px-2.5 py-0.5 rounded border border-[var(--primary)]/20">
                             {project.caseStudy.codeSnippet.filename}
                           </span>
                         </div>
 
-                        <div className="rounded-2xl border border-zinc-850/80 bg-zinc-950 overflow-hidden font-mono shadow-inner text-left">
-                          <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-900/60 bg-zinc-900/30">
+                        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] overflow-hidden font-mono shadow-inner text-left">
+                          <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]/60 bg-[var(--surface)]/30">
                             <div className="flex items-center gap-1.5">
                               <span className="w-3 h-3 rounded-full bg-red-500/70" />
                               <span className="w-3 h-3 rounded-full bg-amber-500/70" />
                               <span className="w-3 h-3 rounded-full bg-green-500/70" />
                             </div>
-                            <span className="text-[10px] text-zinc-500 font-semibold uppercase">
+                            <span className="text-[10px] text-[var(--text-muted)] font-semibold uppercase">
                               {project.caseStudy.codeSnippet.language}
                             </span>
                           </div>
-                          <pre className="p-6 text-xs text-zinc-300 leading-relaxed overflow-x-auto whitespace-pre">
+                          <pre className="p-6 text-xs text-[var(--text-secondary)] leading-relaxed overflow-x-auto whitespace-pre">
                             <code>{project.caseStudy.codeSnippet.code}</code>
                           </pre>
                         </div>
@@ -761,10 +821,10 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                   <div className="space-y-8 text-left">
                     
                     <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest">
+                      <span className="text-[10px] font-mono text-[var(--primary)] uppercase tracking-widest">
                         // BLUEPRINTS & DEPENDENCIES
                       </span>
-                      <p className="text-sm text-zinc-300 leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                         A selective, high-integrity architectural tech stack chosen for sub-millisecond execution, type-safety, and secure containment.
                       </p>
                     </div>
@@ -773,15 +833,15 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                       {details.techStack.map((tech, idx) => (
                         <div
                           key={idx}
-                          className="p-5 rounded-2xl bg-zinc-950/40 border border-zinc-900/80 hover:border-zinc-850 transition-colors"
+                          className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-[var(--border-hover)] transition-colors"
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold text-white">{tech.item}</span>
-                            <span className="text-[9px] font-mono text-purple-400 bg-purple-500/5 border border-purple-500/15 px-2 py-0.5 rounded">
+                            <span className="text-xs font-bold text-[var(--text-primary)]">{tech.item}</span>
+                            <span className="text-[9px] font-mono text-[var(--primary)] bg-[var(--primary)]/5 border border-[var(--primary)]/15 px-2 py-0.5 rounded">
                               {tech.category}
                             </span>
                           </div>
-                          <p className="text-[11px] text-zinc-400 leading-relaxed mt-2">
+                          <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed mt-2">
                             {tech.detail}
                           </p>
                         </div>
@@ -796,36 +856,36 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                   <div className="space-y-10 text-left">
                     
                     <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest">
+                      <span className="text-[10px] font-mono text-[var(--primary)] uppercase tracking-widest">
                         // DEVELOPMENT CHRONOLOGY
                       </span>
-                      <p className="text-sm text-zinc-300 leading-relaxed">
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
                         A detailed timeline tracking core sprints from research models to continuous deployment metrics.
                       </p>
                     </div>
 
-                    <div className="relative border-l border-zinc-850 pl-6 ml-4 space-y-10">
+                    <div className="relative border-l border-[var(--border)] pl-6 ml-4 space-y-10">
                       {details.developmentProcess.map((step, idx) => (
                         <div key={idx} className="relative group">
                           
                           {/* Pulsing point icon */}
-                          <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple-500 border border-zinc-950 group-hover:scale-125 transition-transform" />
+                          <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--primary)] border border-[var(--background)] group-hover:scale-125 transition-transform" />
 
                           <div className="space-y-2">
                             <div className="flex flex-wrap items-center gap-2">
-                              <span className="text-[9px] font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20 font-bold uppercase">
+                              <span className="text-[9px] font-mono text-[var(--primary)] bg-[var(--primary)]/10 px-2 py-0.5 rounded border border-[var(--primary)]/20 font-bold uppercase">
                                 {step.phase}
                               </span>
-                              <h4 className="text-xs font-bold text-white">{step.title}</h4>
-                              <span className="text-zinc-500 font-mono text-[10px] ml-auto">
+                              <h4 className="text-xs font-bold text-[var(--text-primary)]">{step.title}</h4>
+                              <span className="text-[var(--text-muted)] font-mono text-[10px] ml-auto">
                                 {step.timeline}
                               </span>
                             </div>
 
-                            <div className="pl-0 space-y-1.5 text-zinc-400 text-[11px] leading-relaxed">
+                            <div className="pl-0 space-y-1.5 text-[var(--text-secondary)] text-[11px] leading-relaxed">
                               {step.tasks.map((task, tIdx) => (
                                 <div key={tIdx} className="flex gap-2 items-start">
-                                  <span className="text-purple-400 font-mono mt-0.5">&bull;</span>
+                                  <span className="text-[var(--primary)] font-mono mt-0.5">&bull;</span>
                                   <span>{task}</span>
                                 </div>
                               ))}
@@ -845,7 +905,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                     
                     {/* Challenges Block */}
                     <div className="space-y-6">
-                      <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono text-[var(--primary)] uppercase tracking-widest block">
                         // CRITICAL OVERCOMING OBSTACLES
                       </span>
 
@@ -853,10 +913,10 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                         {details.challenges.map((c, idx) => (
                           <div
                             key={idx}
-                            className="p-5 rounded-2xl bg-zinc-950/40 border border-zinc-900/80 space-y-2.5"
+                            className="p-5 rounded-2xl bg-[var(--card)] border border-[var(--border)] space-y-2.5"
                           >
                             <div className="flex items-center justify-between">
-                              <h4 className="text-xs font-bold text-white flex items-center gap-2">
+                              <h4 className="text-xs font-bold text-[var(--text-primary)] flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
                                 <span>{c.title}</span>
                               </h4>
@@ -868,8 +928,8 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                                 {c.difficulty.toUpperCase()}
                               </span>
                             </div>
-                            <p className="text-[11px] text-zinc-400 leading-relaxed pl-3.5 border-l border-zinc-800">
-                              <span className="text-zinc-200 font-medium font-sans">Resolution:</span> {c.solution}
+                            <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed pl-3.5 border-l border-[var(--border)]">
+                              <span className="text-[var(--text-primary)] font-medium font-sans">Resolution:</span> {c.solution}
                             </p>
                           </div>
                         ))}
@@ -878,7 +938,7 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
 
                     {/* Lessons Learned */}
                     <div className="space-y-6 pt-4">
-                      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-widest block">
                         // LESSONS LEARNED & BLUEPRINT takeaways
                       </span>
 
@@ -886,9 +946,9 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                         {details.lessonsLearned.map((lesson, idx) => (
                           <div
                             key={idx}
-                            className="p-4 rounded-xl bg-zinc-900/30 border border-zinc-850/60 flex items-start gap-3.5 text-xs text-zinc-300 leading-relaxed"
+                            className="p-4 rounded-xl bg-[var(--surface)]/30 border border-[var(--border)]/60 flex items-start gap-3.5 text-xs text-[var(--text-secondary)] leading-relaxed"
                           >
-                            <Lightbulb className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                            <Lightbulb className="w-4 h-4 text-[var(--primary)] shrink-0 mt-0.5" />
                             <span>{lesson}</span>
                           </div>
                         ))}
@@ -906,14 +966,14 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
       </section>
 
       {/* Related Case Studies Grid */}
-      <section className="border-t border-zinc-900/40 py-20 bg-zinc-950/20">
+      <section className="border-t border-[var(--border)]/40 py-20 bg-[var(--card)]/20">
         <div className="max-w-5xl mx-auto px-6">
           
           <div className="text-center md:text-left mb-10">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+            <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-widest">
               // MORE PROJECT BLUEPRINTS
             </span>
-            <h3 className="text-lg font-bold text-white mt-1">
+            <h3 className="text-lg font-bold text-[var(--text-primary)] mt-1">
               Explore Related Case Studies
             </h3>
           </div>
@@ -923,10 +983,10 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
               <div
                 key={p.title}
                 onClick={() => onNavigate(p)}
-                className="group p-5 rounded-2xl border border-zinc-900/80 bg-zinc-950/40 hover:border-zinc-700 hover:bg-zinc-900/10 transition-all duration-300 cursor-pointer text-left flex flex-col justify-between"
+                className="group p-5 rounded-2xl border border-[var(--border)] bg-[var(--card)]/40 hover:border-[var(--border-hover)] hover:bg-[var(--surface)]/10 transition-all duration-300 cursor-pointer text-left flex flex-col justify-between"
               >
                 <div className="space-y-3">
-                  <div className="relative w-full aspect-video overflow-hidden rounded-xl border border-zinc-900 bg-zinc-950">
+                  <div className="relative w-full aspect-video overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)]">
                     <img
                       src={p.image}
                       alt={p.title}
@@ -934,15 +994,15 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
                       referrerPolicy="no-referrer"
                     />
                   </div>
-                  <h4 className="text-xs font-bold text-white group-hover:text-purple-400 transition-colors line-clamp-1">
+                  <h4 className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors line-clamp-1">
                     {p.title}
                   </h4>
-                  <p className="text-[10px] text-zinc-400 line-clamp-2 leading-relaxed">
+                  <p className="text-[10px] text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
                     {p.description}
                   </p>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-purple-400 mt-4 self-start group/btn">
+                <div className="flex items-center gap-1.5 text-[10px] font-semibold text-[var(--primary)] mt-4 self-start group/btn">
                   <span>Read Study</span>
                   <ChevronRight className="w-3 h-3 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </div>
@@ -954,10 +1014,10 @@ export default function CaseStudyPage({ project, onClose, onNavigate }: CaseStud
       </section>
 
       {/* Sticky Bottom Actions Bar */}
-      <footer className="py-8 bg-[#030303] border-t border-zinc-900/40 flex items-center justify-center">
+      <footer className="py-8 bg-[var(--background)] border-t border-[var(--border)]/40 flex items-center justify-center">
         <button
           onClick={onClose}
-          className="px-6 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer"
+          className="px-6 py-2.5 rounded-full bg-[var(--surface)] hover:bg-[var(--surface-elevated)] border border-[var(--border)] text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
         >
           Return to Portfolio Hub
         </button>
