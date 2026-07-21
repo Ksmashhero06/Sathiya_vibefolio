@@ -161,7 +161,7 @@ class BreedPipeline:
     status: "Live",
     categories: ["AI", "Web", "Featured", "Hackathon"],
     githubUrl: "https://github.com",
-    liveUrl: "https://voiceofjustice.in",
+    liveUrl: "https://india-s-voice-of-justice.vercel.app/",
     caseStudy: {
       problem: "Millions of Indian citizens struggle to access legal information due to language barriers, legal complexity, and limited access to affordable legal assistance. This often leads to delayed action, workplace exploitation, and poor awareness of fundamental rights.",
       solution: "Developed a full-stack AI platform powered by FastAPI, React, Google Gemini, and FAISS. The system combines a multilingual legal knowledge base with Retrieval-Augmented Generation (RAG) to provide reliable legal guidance, complaint drafting, and document analysis.",
