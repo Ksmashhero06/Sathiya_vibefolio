@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { UNIFIED_CREDENTIALS_DATA } from "./src/data";
-
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -247,6 +247,90 @@ app.get("/api/credly-badges", async (req: Request, res: Response) => {
     profileUrl: `https://www.credly.com/users/${profileId}/badges/credly`,
     data: UNIFIED_CREDENTIALS_DATA
   });
+});
+
+// 4. Mail Transmit / Contact Form API
+app.post("/api/contact", async (req: Request, res: Response) => {
+  try {
+    const { name, email, subject, message } = req.body;
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: "Name, email, and message are required fields." });
+    }
+
+    const recipientEmail = process.env.RECEIVER_EMAIL || "kkssathiyamoorthi@gmail.com";
+
+    // Check for SMTP environment variables (e.g. Gmail App Password, Custom SMTP)
+    const smtpHost = process.env.SMTP_HOST || process.env.EMAIL_HOST;
+    const smtpPort = parseInt(process.env.SMTP_PORT || process.env.EMAIL_PORT || "587");
+    const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER;
+    const smtpPass = process.env.SMTP_PASS || process.env.EMAIL_PASS;
+
+    if (smtpHost && smtpUser && smtpPass) {
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpPort === 465,
+        auth: {
+          user: smtpUser,
+          pass: smtpPass,
+        },
+      });
+
+      await transporter.sendMail({
+        from: `"${name} (Vibefolio)" <${smtpUser}>`,
+        replyTo: email,
+        to: recipientEmail,
+        subject: `[Vibefolio Contact] ${subject || "New Message from " + name}`,
+        html: `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 24px; color: #111827; max-width: 600px; border: 1px solid #e5e7eb; border-radius: 12px; background: #ffffff;">
+            <div style="border-bottom: 2px solid #8b5cf6; padding-bottom: 12px; margin-bottom: 20px;">
+              <h2 style="color: #6d28d9; margin: 0; font-size: 20px;">New Portfolio Transmission</h2>
+              <span style="font-size: 12px; color: #6b7280; font-family: monospace;">Sathiya Vibefolio Router</span>
+            </div>
+            <p style="margin: 8px 0;"><strong>Sender Name:</strong> ${name}</p>
+            <p style="margin: 8px 0;"><strong>Sender Email:</strong> <a href="mailto:${email}" style="color: #7c3aed;">${email}</a></p>
+            <p style="margin: 8px 0;"><strong>Subject:</strong> ${subject || "No Subject"}</p>
+            <div style="margin-top: 20px; padding: 16px; background-color: #f9fafb; border-radius: 8px; border-left: 4px solid #8b5cf6;">
+              <p style="margin: 0 0 6px 0; font-weight: bold; font-size: 12px; color: #4b5563; text-transform: uppercase; letter-spacing: 0.05em;">Message Payload:</p>
+              <p style="margin: 0; white-space: pre-wrap; font-size: 14px; line-height: 1.6; color: #1f2937;">${message}</p>
+            </div>
+            <div style="margin-top: 24px; font-size: 11px; color: #9ca3af; text-align: center;">
+              Sent via Sathiyamoorthi K Portfolio Contact Engine
+            </div>
+          </div>
+        `,
+      });
+
+      return res.json({ success: true, message: `Email delivered to ${recipientEmail} via SMTP.` });
+    }
+
+    // Direct Web3Forms submission backup if access key provided or requested
+    if (process.env.WEB3FORMS_ACCESS_KEY) {
+      const web3Res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.WEB3FORMS_ACCESS_KEY,
+          name,
+          email,
+          subject: subject || `New portfolio message from ${name}`,
+          message,
+        })
+      });
+      if (web3Res.ok) {
+        return res.json({ success: true, message: `Email routed to ${recipientEmail} via Web3Forms.` });
+      }
+    }
+
+    console.log(`[Contact Message Received] To: ${recipientEmail} | From: ${name} <${email}> | Subject: ${subject}`);
+    return res.json({
+      success: true,
+      message: `Transmission accepted for ${recipientEmail}.`
+    });
+  } catch (err: any) {
+    console.error("Error processing contact mail:", err.message);
+    return res.status(500).json({ error: "Failed to send contact message." });
+  }
 });
 
 // Serve frontend assets via Vite in dev or static files in production
